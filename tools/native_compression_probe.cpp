@@ -1,0 +1,65 @@
+#include "xiami_compression.hpp"
+
+#include <algorithm>
+#include <cstdint>
+#include <iostream>
+#include <string>
+#include <vector>
+
+namespace {
+
+constexpr std::uint8_t kZlibData[] = {
+    0x78, 0x9c, 0xed, 0xc9, 0xb1, 0x09, 0x00, 0x20, 0x0c, 0x00, 0xc1, 0x55,
+    0x32, 0x56, 0x0a, 0x9b, 0x08, 0x11, 0x02, 0x1a, 0x45, 0xc4, 0xf9, 0xdd,
+    0x43, 0xfe, 0xda, 0xd3, 0xb0, 0x11, 0x92, 0x76, 0xe2, 0xba, 0x44, 0xb6,
+    0x6e, 0xc7, 0x65, 0xed, 0x59, 0xbd, 0xa4, 0x72, 0x1c, 0xc7, 0x71, 0x1c,
+    0xc7, 0x71, 0x1c, 0xc7, 0x71, 0xf3, 0x97, 0x7b, 0x0e, 0xde, 0x52, 0x4c,
+};
+
+constexpr std::uint8_t kRawData[] = {
+    0xed, 0xc9, 0xb1, 0x09, 0x00, 0x20, 0x0c, 0x00, 0xc1, 0x55, 0x32, 0x56,
+    0x0a, 0x9b, 0x08, 0x11, 0x02, 0x1a, 0x45, 0xc4, 0xf9, 0xdd, 0x43, 0xfe,
+    0xda, 0xd3, 0xb0, 0x11, 0x92, 0x76, 0xe2, 0xba, 0x44, 0xb6, 0x6e, 0xc7,
+    0x65, 0xed, 0x59, 0xbd, 0xa4, 0x72, 0x1c, 0xc7, 0x71, 0x1c, 0xc7, 0x71,
+    0x1c, 0xc7, 0x71, 0xf3, 0x97, 0x7b,
+};
+
+bool verify(const std::vector<std::uint8_t>& output) {
+    const std::string line = "Xiami native inflate probe\\n";
+    if (output.size() != line.size() * 128) {
+        return false;
+    }
+    for (std::size_t offset = 0; offset < output.size(); offset += line.size()) {
+        if (!std::equal(line.begin(), line.end(), output.begin() + offset)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+}  // namespace
+
+int main() {
+    std::vector<std::uint8_t> output;
+    std::string error;
+    if (!xiami::compression::inflate_zlib(
+            kZlibData, sizeof(kZlibData), 3584, 4096, &output, &error) ||
+        !verify(output)) {
+        std::cerr << "zlib probe failed: " << error << '\n';
+        return 1;
+    }
+    if (!xiami::compression::inflate_raw_deflate(
+            kRawData, sizeof(kRawData), 3584, 4096, &output, &error) ||
+        !verify(output)) {
+        std::cerr << "raw probe failed: " << error << '\n';
+        return 1;
+    }
+    if (xiami::compression::inflate_zlib(
+            kZlibData, sizeof(kZlibData), 0, 1024, &output, &error) ||
+        error != "inflate output exceeds configured limit") {
+        std::cerr << "output limit probe failed: " << error << '\n';
+        return 1;
+    }
+    std::cout << "native compression probe: PASS\n";
+    return 0;
+}

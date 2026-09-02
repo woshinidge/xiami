@@ -1,0 +1,332 @@
+{
+  "schema_version": 1,
+  "stage": "store-b01a-focused",
+  "passed": true,
+  "checks": [
+    {
+      "name": "codec-roundtrip-utf-16-le",
+      "passed": true,
+      "detail": {
+        "detected": "utf-16-le",
+        "bom": "fffe"
+      }
+    },
+    {
+      "name": "codec-roundtrip-utf-16-be",
+      "passed": true,
+      "detail": {
+        "detected": "utf-16-be",
+        "bom": "feff"
+      }
+    },
+    {
+      "name": "opaque-recursive-text-preserved",
+      "passed": true,
+      "detail": {
+        "planned_outputs": 0
+      }
+    },
+    {
+      "name": "invalid-root-zero-write",
+      "passed": true,
+      "detail": "请先填写正确且非 reparse 的版本根目录"
+    },
+    {
+      "name": "generate-style-0",
+      "passed": true,
+      "detail": {
+        "encoding": "utf-8",
+        "bom": false,
+        "eol": "\n",
+        "trailing": true,
+        "committed": true,
+        "category_paths_local": true,
+        "markers": true,
+        "qfunction_marker": true,
+        "bom_preserved": true,
+        "eol_preserved": true,
+        "excluded_monitems": true,
+        "excluded_common": true,
+        "excluded_recursive_questdiary": true
+      }
+    },
+    {
+      "name": "generate-idempotent-0",
+      "passed": true,
+      "detail": {
+        "txid": "84682d040e254803aea8bf0f171d943f",
+        "state": "committed",
+        "changed": 0,
+        "journal_clean": true
+      }
+    },
+    {
+      "name": "delete-roundtrip-0",
+      "passed": true,
+      "detail": {
+        "txid": "c94ddf3217ed44099d907c5c9e68899c",
+        "state": "committed",
+        "changed": 11,
+        "journal_clean": true
+      }
+    },
+    {
+      "name": "generate-style-1",
+      "passed": true,
+      "detail": {
+        "encoding": "utf-8",
+        "bom": true,
+        "eol": "\r\n",
+        "trailing": true,
+        "committed": true,
+        "category_paths_local": true,
+        "markers": true,
+        "qfunction_marker": true,
+        "bom_preserved": true,
+        "eol_preserved": true,
+        "excluded_monitems": true,
+        "excluded_common": true,
+        "excluded_recursive_questdiary": true
+      }
+    },
+    {
+      "name": "generate-idempotent-1",
+      "passed": true,
+      "detail": {
+        "txid": "ffd2f385d34d4ca993b66362e02b6170",
+        "state": "committed",
+        "changed": 0,
+        "journal_clean": true
+      }
+    },
+    {
+      "name": "delete-roundtrip-1",
+      "passed": true,
+      "detail": {
+        "txid": "a91a9f7e141042a1b2a210494da0e22d",
+        "state": "committed",
+        "changed": 11,
+        "journal_clean": true
+      }
+    },
+    {
+      "name": "generate-style-2",
+      "passed": true,
+      "detail": {
+        "encoding": "gb18030",
+        "bom": false,
+        "eol": "\r\n",
+        "trailing": false,
+        "committed": true,
+        "category_paths_local": true,
+        "markers": true,
+        "qfunction_marker": true,
+        "bom_preserved": true,
+        "eol_preserved": true,
+        "excluded_monitems": true,
+        "excluded_common": true,
+        "excluded_recursive_questdiary": true
+      }
+    },
+    {
+      "name": "generate-idempotent-2",
+      "passed": true,
+      "detail": {
+        "txid": "75b009ba0016431ebd95ace5faff2500",
+        "state": "committed",
+        "changed": 0,
+        "journal_clean": true
+      }
+    },
+    {
+      "name": "delete-roundtrip-2",
+      "passed": true,
+      "detail": {
+        "txid": "8391099bda164c8e85d8b250004f880c",
+        "state": "committed",
+        "changed": 11,
+        "journal_clean": true
+      }
+    },
+    {
+      "name": "generate-style-3",
+      "passed": true,
+      "detail": {
+        "encoding": "gb18030",
+        "bom": false,
+        "eol": "\n",
+        "trailing": true,
+        "committed": true,
+        "category_paths_local": true,
+        "markers": true,
+        "qfunction_marker": true,
+        "bom_preserved": true,
+        "eol_preserved": true,
+        "excluded_monitems": true,
+        "excluded_common": true,
+        "excluded_recursive_questdiary": true
+      }
+    },
+    {
+      "name": "generate-idempotent-3",
+      "passed": true,
+      "detail": {
+        "txid": "c7a9a260dd3b48cea03729a453ce4feb",
+        "state": "committed",
+        "changed": 0,
+        "journal_clean": true
+      }
+    },
+    {
+      "name": "delete-roundtrip-3",
+      "passed": true,
+      "detail": {
+        "txid": "4c3d4a95bcb04ed6ba351eb9c56a02ba",
+        "state": "committed",
+        "changed": 11,
+        "journal_clean": true
+      }
+    },
+    {
+      "name": "after-replace-rollback",
+      "passed": true,
+      "detail": {
+        "error": "injected-after-replace",
+        "same_tree": true
+      }
+    },
+    {
+      "name": "pre-sha-race",
+      "passed": true,
+      "detail": "存销目标被外部修改：C:\\Users\\Administrator\\AppData\\Local\\Temp\\xiami-store-b01a-probe-jh_f139l\\race\\version\\Mir200\\Envir\\MapQuest_def\\QManage.txt"
+    },
+    {
+      "name": "backup-fault-zero-write",
+      "passed": true,
+      "detail": "injected-backup-fault"
+    },
+    {
+      "name": "stage-fault-zero-write",
+      "passed": true,
+      "detail": "injected-stage-fault"
+    },
+    {
+      "name": "post-verify-rollback",
+      "passed": true,
+      "detail": "injected-post-verify-fault"
+    },
+    {
+      "name": "journal-recovery-terminal",
+      "passed": true,
+      "detail": [
+        {
+          "txid": "probe-recovery",
+          "state": "recovered"
+        }
+      ]
+    },
+    {
+      "name": "journal-recovery-idempotent-restart",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "journal-recovery-external-change-rejected",
+      "passed": true,
+      "detail": [
+        {
+          "journal": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\XiamiToolbox\\store-transactions\\probe-recovery-tamper-4abc0b094c3e4ef392d00e8f1e8bb38a.json",
+          "state": "recovery-failed",
+          "error": "存销恢复目标被外部修改：C:\\Users\\Administrator\\AppData\\Local\\Temp\\xiami-store-b01a-probe-jh_f139l\\journal-recovery\\version\\Mir200\\Envir\\MapQuest_def\\QManage.txt"
+        }
+      ]
+    },
+    {
+      "name": "delete-after-replace-rollback",
+      "passed": true,
+      "detail": "injected-delete-fault"
+    },
+    {
+      "name": "unowned-category-reject",
+      "passed": true,
+      "detail": "分类目录包含非本工具文件，拒绝删除：用户自定义.txt"
+    },
+    {
+      "name": "reparse-reject",
+      "passed": true,
+      "detail": "存销路径包含 reparse point：C:\\Users\\Administrator\\AppData\\Local\\Temp\\xiami-store-b01a-probe-jh_f139l\\reparse\\version\\Mir200\\Envir\\QuestDiary\\游戏功能"
+    },
+    {
+      "name": "delete-default-no-zero-write",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "delete-cancel-zero-write",
+      "passed": true,
+      "detail": true
+    }
+  ],
+  "style_results": [
+    {
+      "encoding": "utf-8",
+      "bom": false,
+      "eol": "\n",
+      "trailing": true,
+      "committed": true,
+      "category_paths_local": true,
+      "markers": true,
+      "qfunction_marker": true,
+      "bom_preserved": true,
+      "eol_preserved": true,
+      "excluded_monitems": true,
+      "excluded_common": true,
+      "excluded_recursive_questdiary": true
+    },
+    {
+      "encoding": "utf-8",
+      "bom": true,
+      "eol": "\r\n",
+      "trailing": true,
+      "committed": true,
+      "category_paths_local": true,
+      "markers": true,
+      "qfunction_marker": true,
+      "bom_preserved": true,
+      "eol_preserved": true,
+      "excluded_monitems": true,
+      "excluded_common": true,
+      "excluded_recursive_questdiary": true
+    },
+    {
+      "encoding": "gb18030",
+      "bom": false,
+      "eol": "\r\n",
+      "trailing": false,
+      "committed": true,
+      "category_paths_local": true,
+      "markers": true,
+      "qfunction_marker": true,
+      "bom_preserved": true,
+      "eol_preserved": true,
+      "excluded_monitems": true,
+      "excluded_common": true,
+      "excluded_recursive_questdiary": true
+    },
+    {
+      "encoding": "gb18030",
+      "bom": false,
+      "eol": "\n",
+      "trailing": true,
+      "committed": true,
+      "category_paths_local": true,
+      "markers": true,
+      "qfunction_marker": true,
+      "bom_preserved": true,
+      "eol_preserved": true,
+      "excluded_monitems": true,
+      "excluded_common": true,
+      "excluded_recursive_questdiary": true
+    }
+  ]
+}

@@ -1,0 +1,638 @@
+{
+  "assertions": [
+    {
+      "detail": "",
+      "name": "pak_password_local_algorithm_removed",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "pak_password_local_algorithm_markers_absent",
+      "passed": true
+    },
+    {
+      "detail": "{}",
+      "name": "empty_load_zero_write",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "ordinary_form_edit_zero_write",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "gom_create_success",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "gom_gbk_crlf",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "ordinary_pak_byte_identical",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "nongom_create_success",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "pak_txt_encoding_newline_trailing_preserved",
+      "passed": true
+    },
+    {
+      "detail": "D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\server-root\\MirServer-中文\\PatchA\\Data\\a.pak|AAAAAAAAAA\r\nD:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\server-root\\MirServer-中文\\PatchA\\Graphics\\b.pak|AAAAAAAAAA\r\nD:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\server-root\\MirServer-中文\\PatchA\\Data\\empty.pak|",
+      "name": "pak_txt_paths_follow_selected_patch",
+      "passed": true
+    },
+    {
+      "detail": "D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\server-root\\MirServer-中文\\PatchA\\Data\\a.pak|AAAAAAAAAA\r\nD:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\server-root\\MirServer-中文\\PatchA\\Graphics\\b.pak|AAAAAAAAAA\r\nD:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\server-root\\MirServer-中文\\PatchA\\Data\\empty.pak|",
+      "name": "pak_txt_empty_password_preserved",
+      "passed": true
+    },
+    {
+      "detail": "[{'session': {}, 'passwords': ['密码', '1234'], 'client_version': '1.4.5', 'allow_local_http': False}]",
+      "name": "pak_passwords_use_one_batched_core_rpc",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "same_name_update_stable_id",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "same_name_update_no_duplicate",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "special_normalization_stable_collision",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "special_normalization_single_item",
+      "passed": true
+    },
+    {
+      "detail": "{\"changed\": [], \"before_current\": \"0bb20ef47dbf48ee87361f4a2fb8ae81\", \"after_current\": \"0bb20ef47dbf48ee87361f4a2fb8ae81\", \"before_residue\": [], \"after_residue\": []}",
+      "name": "copy_failure_rollback",
+      "passed": true
+    },
+    {
+      "detail": "{\"changed\": [], \"before_current\": \"0bb20ef47dbf48ee87361f4a2fb8ae81\", \"after_current\": \"0bb20ef47dbf48ee87361f4a2fb8ae81\", \"before_residue\": [], \"after_residue\": []}",
+      "name": "config_write_failure_rollback",
+      "passed": true
+    },
+    {
+      "detail": "{\"changed\": [], \"before_current\": \"0bb20ef47dbf48ee87361f4a2fb8ae81\", \"after_current\": \"0bb20ef47dbf48ee87361f4a2fb8ae81\", \"before_residue\": [], \"after_residue\": []}",
+      "name": "pak_conversion_failure_rollback",
+      "passed": true
+    },
+    {
+      "detail": "{\"changed\": [], \"before_current\": \"0bb20ef47dbf48ee87361f4a2fb8ae81\", \"after_current\": \"0bb20ef47dbf48ee87361f4a2fb8ae81\", \"before_residue\": [], \"after_residue\": []}",
+      "name": "directory_replace_failure_rollback",
+      "passed": true
+    },
+    {
+      "detail": "{\"changed\": [], \"before_current\": \"0bb20ef47dbf48ee87361f4a2fb8ae81\", \"after_current\": \"0bb20ef47dbf48ee87361f4a2fb8ae81\", \"before_residue\": [], \"after_residue\": []}",
+      "name": "store_replace_failure_rollback",
+      "passed": true
+    },
+    {
+      "detail": "{\"changed\": [], \"before_current\": \"0bb20ef47dbf48ee87361f4a2fb8ae81\", \"after_current\": \"0bb20ef47dbf48ee87361f4a2fb8ae81\", \"before_residue\": [], \"after_residue\": []}",
+      "name": "invalid_pak_rollback",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "failure_baseline_still_present",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "save_template_success",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "template_overwrite_refusal",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "template_confirmed_overwrite",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "invalid_template_zero_write",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "delete_cancel_stable",
+      "passed": true
+    },
+    {
+      "detail": "{'object_type': 'QMessageBox', 'title': '确认', 'text': '确定删除当前微端配置吗？\\n你可以选择是否同时删除补丁目录。\\n名称：非GOM成功版\\n配置目录：D:\\\\AI程序编辑\\\\RJDM\\\\虾米工具箱\\\\workflow\\\\acceptance\\\\batch\\\\micro-b01\\\\r01\\\\fixture\\\\micro-root\\\\非GOM成功版\\n补丁目录：D:\\\\AI程序编辑\\\\RJDM\\\\虾米工具箱\\\\workflow\\\\acceptance\\\\batch\\\\micro-b01\\\\r01\\\\fixture\\\\server-root\\\\MirServer-中文\\\\PatchA', 'buttons': {'取消': 1, '删除配置和补丁': 5, '只删除配置': 6}, 'default': '取消', 'escape': '取消', 'auto_default': {'取消': True, '删除配置和补丁': False, '只删除配置': False}, 'is_default': {'取消': True, '删除配置和补丁': False, '只删除配置': False}, 'capture': 'states/delete-confirmation-actual.png', 'capture_sha256': '6289746a9307a9fb77e552ee0ec537acc1e9e6a54c1253bfcc39e4b91d915242', 'render_size': [916, 150], 'button_rects': {'取消': [814, 0, 80, 26], '删除配置和补丁': [590, 3, 119, 20], '只删除配置': [715, 0, 93, 26]}, 'text_rect': [62, 11, 843, 90], 'no_crop': True, 'text_required_width': 796, 'text_not_clipped': True, 'buttons_text_fit': True}",
+      "name": "delete_dialog_actual_contract",
+      "passed": true
+    },
+    {
+      "detail": "{'enter': {'activated_button': '取消', 'tree_stable': True}, 'return': {'activated_button': '取消', 'tree_stable': True}, 'escape': {'activated_button': '取消', 'tree_stable': True}}",
+      "name": "delete_keyboard_cancel_zero_write",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "delete_choice_mapping",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "remove_config_only_keeps_patch",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "remove_config_and_patch",
+      "passed": true
+    },
+    {
+      "detail": "[]",
+      "name": "delete_store_failure_rollback",
+      "passed": true
+    },
+    {
+      "detail": "{'parent': True, 'root': True, 'adjacent': True, 'symlink': True, 'junction': True}",
+      "name": "path_boundary_rejects",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "adjacent_untouched",
+      "passed": true
+    },
+    {
+      "detail": "[{'kind': 'Popen', 'args': (['D:\\\\AI程序编辑\\\\RJDM\\\\虾米工具箱\\\\workflow\\\\acceptance\\\\batch\\\\micro-b01\\\\r01\\\\fixture\\\\fake.exe'],), 'kwargs': {'cwd': 'D:\\\\AI程序编辑\\\\RJDM\\\\虾米工具箱\\\\workflow\\\\acceptance\\\\batch\\\\micro-b01\\\\r01\\\\fixture'}}, {'kind': 'run', 'args': (['taskkill', '/PID', '4242', '/T', '/F'],), 'kwargs': {'stdout': -3, 'stderr': -3, 'creationflags': 134217728, 'check': False}}]",
+      "name": "external_process_intercepted",
+      "passed": true
+    },
+    {
+      "detail": "{'kind': 'Popen', 'args': (['D:\\\\AI程序编辑\\\\RJDM\\\\虾米工具箱\\\\workflow\\\\acceptance\\\\batch\\\\micro-b01\\\\r01\\\\fixture\\\\fake.exe'],), 'kwargs': {'cwd': 'D:\\\\AI程序编辑\\\\RJDM\\\\虾米工具箱\\\\workflow\\\\acceptance\\\\batch\\\\micro-b01\\\\r01\\\\fixture'}}",
+      "name": "external_exe_args_cwd",
+      "passed": true
+    },
+    {
+      "detail": "[{'kind': 'Popen', 'args': (['D:\\\\AI程序编辑\\\\RJDM\\\\虾米工具箱\\\\workflow\\\\acceptance\\\\batch\\\\micro-b01\\\\r01\\\\fixture\\\\fake.exe'],), 'kwargs': {'cwd': 'D:\\\\AI程序编辑\\\\RJDM\\\\虾米工具箱\\\\workflow\\\\acceptance\\\\batch\\\\micro-b01\\\\r01\\\\fixture'}}, {'kind': 'run', 'args': (['taskkill', '/PID', '4242', '/T', '/F'],), 'kwargs': {'stdout': -3, 'stderr': -3, 'creationflags': 134217728, 'check': False}}, {'kind': 'startfile', 'args': ('D:\\\\AI程序编辑\\\\RJDM\\\\虾米工具箱\\\\workflow\\\\acceptance\\\\batch\\\\micro-b01\\\\r01\\\\fixture\\\\micro-root\\\\删除回滚',)}]",
+      "name": "open_directory_intercepted",
+      "passed": true
+    },
+    {
+      "detail": "[['setsockopt', [65535, 4, 1]], ['bind', ['0.0.0.0', 8123]], ['close']]",
+      "name": "port_bind_intercepted",
+      "passed": true
+    },
+    {
+      "detail": "[{'hwnds': [9001], 'visible': False, 'cid': '143bc58316b4491f9a986bf22176c627'}, {'hwnds': [9001], 'visible': True, 'cid': '143bc58316b4491f9a986bf22176c627'}]",
+      "name": "selected_window_calls_intercepted",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "simulated_running_selected_pid",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "status_worker_failure_settles",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "status_repeated_refresh_settles",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "status_about_to_quit_threads_timers_zero",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "status_close_threads_timers_zero",
+      "passed": true
+    },
+    {
+      "detail": "{'baseline_active_qthreads': 0, 'phases': [{'name': 'failure', 'settled': True, 'active_qthreads': 0}, {'name': 'repeat', 'settled': True, 'active_qthreads': 0}], 'end_active_qthreads': 0, 'refs_none': True, 'timers_inactive': True, 'registered_threads': 2, 'qthread_destroyed_warnings': []}",
+      "name": "lifecycle_active_qthreads_zero",
+      "passed": true
+    },
+    {
+      "detail": "[]",
+      "name": "no_transaction_residue",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "name": "template_source_unchanged",
+      "passed": true
+    }
+  ],
+  "behavior": {
+    "boundary": {
+      "adjacent": true,
+      "junction": true,
+      "parent": true,
+      "root": true,
+      "symlink": true
+    },
+    "delete_dialogs": [
+      {
+        "auto_default": {
+          "删除配置和补丁": false,
+          "取消": true,
+          "只删除配置": false
+        },
+        "button_rects": {
+          "删除配置和补丁": [
+            590,
+            3,
+            119,
+            20
+          ],
+          "取消": [
+            814,
+            0,
+            80,
+            26
+          ],
+          "只删除配置": [
+            715,
+            0,
+            93,
+            26
+          ]
+        },
+        "buttons": {
+          "删除配置和补丁": 5,
+          "取消": 1,
+          "只删除配置": 6
+        },
+        "buttons_text_fit": true,
+        "capture": "states/delete-confirmation-actual.png",
+        "capture_sha256": "6289746a9307a9fb77e552ee0ec537acc1e9e6a54c1253bfcc39e4b91d915242",
+        "default": "取消",
+        "escape": "取消",
+        "is_default": {
+          "删除配置和补丁": false,
+          "取消": true,
+          "只删除配置": false
+        },
+        "no_crop": true,
+        "object_type": "QMessageBox",
+        "render_size": [
+          916,
+          150
+        ],
+        "text": "确定删除当前微端配置吗？\n你可以选择是否同时删除补丁目录。\n名称：非GOM成功版\n配置目录：D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\micro-root\\非GOM成功版\n补丁目录：D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\server-root\\MirServer-中文\\PatchA",
+        "text_not_clipped": true,
+        "text_rect": [
+          62,
+          11,
+          843,
+          90
+        ],
+        "text_required_width": 796,
+        "title": "确认"
+      },
+      {
+        "activated_button": "取消",
+        "activation": "enter",
+        "auto_default": {
+          "删除配置和补丁": false,
+          "取消": true,
+          "只删除配置": false
+        },
+        "buttons": {
+          "删除配置和补丁": 5,
+          "取消": 1,
+          "只删除配置": 6
+        },
+        "contract_mapping": "defaultButton",
+        "default": "取消",
+        "escape": "取消",
+        "is_default": {
+          "删除配置和补丁": false,
+          "取消": true,
+          "只删除配置": false
+        },
+        "native_hidden_event_button": "",
+        "object_type": "QMessageBox",
+        "text": "确定删除当前微端配置吗？\n你可以选择是否同时删除补丁目录。\n名称：非GOM成功版\n配置目录：D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\micro-root\\非GOM成功版\n补丁目录：D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\server-root\\MirServer-中文\\PatchA",
+        "title": "确认"
+      },
+      {
+        "activated_button": "取消",
+        "activation": "return",
+        "auto_default": {
+          "删除配置和补丁": false,
+          "取消": true,
+          "只删除配置": false
+        },
+        "buttons": {
+          "删除配置和补丁": 5,
+          "取消": 1,
+          "只删除配置": 6
+        },
+        "contract_mapping": "defaultButton",
+        "default": "取消",
+        "escape": "取消",
+        "is_default": {
+          "删除配置和补丁": false,
+          "取消": true,
+          "只删除配置": false
+        },
+        "native_hidden_event_button": "",
+        "object_type": "QMessageBox",
+        "text": "确定删除当前微端配置吗？\n你可以选择是否同时删除补丁目录。\n名称：非GOM成功版\n配置目录：D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\micro-root\\非GOM成功版\n补丁目录：D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\server-root\\MirServer-中文\\PatchA",
+        "title": "确认"
+      },
+      {
+        "activated_button": "取消",
+        "activation": "escape",
+        "auto_default": {
+          "删除配置和补丁": false,
+          "取消": true,
+          "只删除配置": false
+        },
+        "buttons": {
+          "删除配置和补丁": 5,
+          "取消": 1,
+          "只删除配置": 6
+        },
+        "contract_mapping": "escapeButton",
+        "default": "取消",
+        "escape": "取消",
+        "is_default": {
+          "删除配置和补丁": false,
+          "取消": true,
+          "只删除配置": false
+        },
+        "native_hidden_event_button": "",
+        "object_type": "QMessageBox",
+        "text": "确定删除当前微端配置吗？\n你可以选择是否同时删除补丁目录。\n名称：非GOM成功版\n配置目录：D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\micro-root\\非GOM成功版\n补丁目录：D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\server-root\\MirServer-中文\\PatchA",
+        "title": "确认"
+      },
+      {
+        "auto_default": {
+          "删除配置和补丁": false,
+          "取消": true,
+          "只删除配置": false
+        },
+        "buttons": {
+          "删除配置和补丁": 5,
+          "取消": 1,
+          "只删除配置": 6
+        },
+        "default": "取消",
+        "escape": "取消",
+        "is_default": {
+          "删除配置和补丁": false,
+          "取消": true,
+          "只删除配置": false
+        },
+        "object_type": "QMessageBox",
+        "text": "确定删除当前微端配置吗？\n你可以选择是否同时删除补丁目录。\n名称：仅删配置\n配置目录：D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\micro-root\\仅删配置\n补丁目录：D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\server-root\\MirServer-中文\\PatchA",
+        "title": "确认"
+      },
+      {
+        "auto_default": {
+          "删除配置和补丁": false,
+          "取消": true,
+          "只删除配置": false
+        },
+        "buttons": {
+          "删除配置和补丁": 5,
+          "取消": 1,
+          "只删除配置": 6
+        },
+        "default": "取消",
+        "escape": "取消",
+        "is_default": {
+          "删除配置和补丁": false,
+          "取消": true,
+          "只删除配置": false
+        },
+        "object_type": "QMessageBox",
+        "text": "确定删除当前微端配置吗？\n你可以选择是否同时删除补丁目录。\n名称：配置补丁同删\n配置目录：D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\micro-root\\配置补丁同删\n补丁目录：D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\server-root\\MirServer-中文\\PatchB",
+        "title": "确认"
+      },
+      {
+        "auto_default": {
+          "删除配置和补丁": false,
+          "取消": true,
+          "只删除配置": false
+        },
+        "buttons": {
+          "删除配置和补丁": 5,
+          "取消": 1,
+          "只删除配置": 6
+        },
+        "default": "取消",
+        "escape": "取消",
+        "is_default": {
+          "删除配置和补丁": false,
+          "取消": true,
+          "只删除配置": false
+        },
+        "object_type": "QMessageBox",
+        "text": "确定删除当前微端配置吗？\n你可以选择是否同时删除补丁目录。\n名称：删除回滚\n配置目录：D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\micro-root\\删除回滚\n补丁目录：D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\server-root\\MirServer-中文\\PatchA",
+        "title": "确认"
+      }
+    ],
+    "dialogs": [
+      {
+        "kind": "information",
+        "text": "版本名称包含特殊字符，已自动处理为：特_殊_版",
+        "title": "提示"
+      },
+      {
+        "kind": "information",
+        "text": "版本名称包含特殊字符，已自动处理为：特_殊_版",
+        "title": "提示"
+      },
+      {
+        "kind": "warning",
+        "text": "微端事务已回滚：injected copy failure",
+        "title": "创建失败"
+      },
+      {
+        "kind": "warning",
+        "text": "写入网关配置失败：injected config write failure",
+        "title": "提示"
+      },
+      {
+        "kind": "warning",
+        "text": "微端事务已回滚：微端配置后处理失败",
+        "title": "创建失败"
+      },
+      {
+        "kind": "warning",
+        "text": "复制 PAK 文件失败：injected PAK conversion failure",
+        "title": "提示"
+      },
+      {
+        "kind": "warning",
+        "text": "微端事务已回滚：微端配置后处理失败",
+        "title": "创建失败"
+      },
+      {
+        "kind": "warning",
+        "text": "微端事务已回滚：injected directory replace failure",
+        "title": "创建失败"
+      },
+      {
+        "kind": "warning",
+        "text": "微端事务已回滚：写入微端配置存储失败",
+        "title": "创建失败"
+      },
+      {
+        "kind": "warning",
+        "text": "PAK 文件无效，未写入目标目录",
+        "title": "创建失败"
+      },
+      {
+        "kind": "information",
+        "text": "模板已保存：模板A",
+        "title": "保存成功"
+      },
+      {
+        "kind": "question",
+        "text": "模板已存在，是否覆盖？",
+        "title": "确认"
+      },
+      {
+        "kind": "question",
+        "text": "模板已存在，是否覆盖？",
+        "title": "确认"
+      },
+      {
+        "kind": "information",
+        "text": "模板已保存：模板A",
+        "title": "保存成功"
+      },
+      {
+        "kind": "information",
+        "text": "模板不存在，请重新选择",
+        "title": "提示"
+      },
+      {
+        "kind": "warning",
+        "text": "删除事务已回滚：写入微端配置存储失败",
+        "title": "删除失败"
+      },
+      {
+        "kind": "information",
+        "text": "服务端口 7000：空闲\n列表端口 7100：空闲\n微端端口 7200：空闲",
+        "title": "端口占用"
+      },
+      {
+        "kind": "information",
+        "text": "服务端口 7000：空闲\n列表端口 7100：空闲\n微端端口 7200：空闲",
+        "title": "端口占用"
+      },
+      {
+        "kind": "information",
+        "text": "服务端口 7000：空闲\n列表端口 7100：空闲\n微端端口 7200：空闲",
+        "title": "端口占用"
+      },
+      {
+        "kind": "information",
+        "text": "服务端口 7000：空闲\n列表端口 7100：空闲\n微端端口 7200：空闲",
+        "title": "端口占用"
+      }
+    ],
+    "external": [
+      {
+        "args": [
+          [
+            "D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\fake.exe"
+          ]
+        ],
+        "kind": "Popen",
+        "kwargs": {
+          "cwd": "D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture"
+        }
+      },
+      {
+        "args": [
+          [
+            "taskkill",
+            "/PID",
+            "4242",
+            "/T",
+            "/F"
+          ]
+        ],
+        "kind": "run",
+        "kwargs": {
+          "check": false,
+          "creationflags": 134217728,
+          "stderr": -3,
+          "stdout": -3
+        }
+      },
+      {
+        "args": [
+          "D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\fixture\\micro-root\\删除回滚"
+        ],
+        "kind": "startfile"
+      }
+    ],
+    "font": {
+      "families": [
+        "Microsoft YaHei",
+        "Microsoft YaHei UI",
+        "SimHei",
+        "SimSun",
+        "NSimSun"
+      ],
+      "selected": "Microsoft YaHei"
+    },
+    "items": 5,
+    "lifecycle": {
+      "baseline_active_qthreads": 0,
+      "end_active_qthreads": 0,
+      "phases": [
+        {
+          "active_qthreads": 0,
+          "name": "failure",
+          "settled": true
+        },
+        {
+          "active_qthreads": 0,
+          "name": "repeat",
+          "settled": true
+        }
+      ],
+      "qthread_destroyed_warnings": [],
+      "refs_none": true,
+      "registered_threads": 2,
+      "timers_inactive": true
+    },
+    "store": "D:\\AI程序编辑\\RJDM\\虾米工具箱\\workflow\\acceptance\\batch\\micro-b01\\r01\\runtime\\behavior\\Local\\XiamiToolbox\\micro_client_configs.json"
+  },
+  "cli": {},
+  "legacy_micro": {},
+  "passed": true,
+  "states": {},
+  "visual": {}
+}

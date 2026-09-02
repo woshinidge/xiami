@@ -1,0 +1,60 @@
+version: 1
+status: approved
+register: product
+direction: cool-gray-industrial-workbench
+baseline_concept: outputs/ui-assets/xiami-workbench-concept-v1.png
+
+dials:
+  soul: 5
+  spectacle: 1
+  density: 9
+
+palette:
+  canvas: "#F3F5F7"
+  surface: "#FFFFFF"
+  surface_muted: "#F7F8F9"
+  text: "#17202A"
+  text_muted: "#667085"
+  border: "#D7DCE2"
+  border_soft: "#E7EAEE"
+  accent: "#E66A00"
+  accent_hover: "#CC5E00"
+  info: "#2563A6"
+  success: "#27845A"
+  warning: "#B65C18"
+  danger: "#B83A32"
+
+metrics:
+  spacing: [4, 8, 12, 16, 24]
+  radius_small: 4
+  radius_medium: 6
+  control_height_compact: 28
+  control_height_normal: 32
+  table_row_height: 34
+  icon_size: 16
+  border_width: 1
+
+typography:
+  ui_family: "Segoe UI, Microsoft YaHei UI"
+  data_family: "Consolas, Microsoft YaHei UI"
+  sizes: [12, 14, 16, 18, 20, 24]
+  viewport_scaling: false
+  letter_spacing: 0
+
+components:
+  button_roles: [primary, secondary, tertiary, danger, compact]
+  field_states: [normal, hover, focus, disabled, error, success, readonly]
+  page_templates: [table-tool, generator, split-workspace, settings]
+  dominant_radius: small
+  decorative_motion: false
+
+constraints:
+  minimum_viewport: "1180x720"
+  reference_viewport: "1440x860"
+  max_primary_actions_per_page: 1
+  no_nested_cards: true
+  no_gradients: true
+  no_glassmorphism: true
+  no_gpu_dependency: true
+  preserve_pyside2: true
+  preserve_windows_2012r2_compatibility: true

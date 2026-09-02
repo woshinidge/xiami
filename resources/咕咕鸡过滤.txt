@@ -1,0 +1,2108 @@
+[@咕咕鸡过滤]
+{
+#IF
+#ACT
+MOV S$用户数据存储地址 ..\..\..\..\通区文件\<$SERVERNAME>\<$USERID>_<$USERNAME>.ini
+MOV S$本地物品数据存储地址 ..\QuestDiary\ggjfl\
+MOV S$仓库索引文件 ..\..\..\..\通区文件\<$SERVERNAME>\仓库索引_<$USERID>_<$USERNAME>.txt
+MOV S$仓库数量文件 ..\..\..\..\通区文件\<$SERVERNAME>\仓库数量_<$USERID>_<$USERNAME>.txt
+MOV S$物品数据存储地址 ..\..\..\..\通区文件\<$SERVERNAME>\物品数据\
+MOV S$地图数据存储地址 ..\..\..\..\通区文件\<$SERVERNAME>\地图数据\
+MOV N$背包存储_定时开关 0
+ReadConfigFileItem S$用户数据存储地址 咕咕鸡过滤 背包存储定时 N$背包存储_定时开关
+#IF
+EQUAL N$背包存储_定时开关 0
+#ACT
+MOV S$背包存储_定时状态 关
+MOV S$背包存储_定时勾选 [X]
+#IF
+EQUAL N$背包存储_定时开关 1
+#ACT
+MOV S$背包存储_定时状态 开
+MOV S$背包存储_定时勾选 [√]
+
+#IF
+EQUAL S$上次列表缓存Key ""
+#ACT
+MOV L$列表缓存 []
+MOV N$列表缓存数量 0
+
+
+#IF
+EQUAL S$当前操作模式 ""
+#ACT
+MOV S$当前操作模式 过滤设置
+
+#IF
+EQUAL S$当前浏览分类 ""
+#ACT
+MOV S$当前浏览分类 武器
+
+#IF
+EQUAL N$当前页码 0
+#ACT
+MOV N$当前页码 1
+
+#IF
+#ACT
+GOTO @开始构建列表界面
+BREAK
+
+[@开始构建列表界面]
+#IF
+#ACT
+#IF
+NOT EQUAL S$当前浏览分类 所有物品
+#ACT
+MOV S$搜索关键字 ""
+MOV S$UI搜索关键字 ""
+
+#IF
+#ACT
+MOV N$默认武器类型 18
+MOV N$默认衣服类型 21
+MOV N$默认头盔类型 24
+MOV N$默认手镯类型 27
+MOV N$默认戒指类型 30
+MOV N$默认项链类型 33
+MOV N$默认勋章类型 36
+MOV N$默认腰带类型 39
+MOV N$默认靴子类型 42
+MOV N$默认斗笠类型 45
+MOV N$默认盾牌类型 48
+MOV N$默认宝石类型 51
+MOV N$默认时装类型 54
+MOV N$默认毒符类型 57
+MOV N$默认军鼓类型 60
+MOV N$默认马牌类型 63
+MOV N$默认生肖类型 66
+MOV N$默认灵玉类型 75
+MOV N$默认特殊类型 69
+MOV N$默认其它类型 72
+
+MOV N$默认过滤类型 78
+MOV N$默认存储类型 81
+MOV N$默认仓库类型 84
+
+GOTO @设置分类状态
+
+[@设置分类状态]
+#IF
+EQUAL S$当前浏览分类 武器
+#ACT
+MOV N$默认武器类型 20
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 衣服
+#ACT
+MOV N$默认衣服类型 23
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 头盔
+#ACT
+MOV N$默认头盔类型 26
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 手镯
+#ACT
+MOV N$默认手镯类型 29
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 戒指
+#ACT
+MOV N$默认戒指类型 32
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 项链
+#ACT
+MOV N$默认项链类型 35
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 勋章
+#ACT
+MOV N$默认勋章类型 38
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 腰带
+#ACT
+MOV N$默认腰带类型 41
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 靴子
+#ACT
+MOV N$默认靴子类型 44
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 斗笠
+#ACT
+MOV N$默认斗笠类型 47
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 盾牌
+#ACT
+MOV N$默认盾牌类型 50
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 宝石
+#ACT
+MOV N$默认宝石类型 53
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 时装
+#ACT
+MOV N$默认时装类型 56
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 毒符
+#ACT
+MOV N$默认毒符类型 59
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 军鼓
+#ACT
+MOV N$默认军鼓类型 62
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 马牌
+#ACT
+MOV N$默认马牌类型 65
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 生肖
+#ACT
+MOV N$默认生肖类型 68
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 灵玉
+#ACT
+MOV N$默认灵玉类型 77
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 特殊
+#ACT
+MOV N$默认特殊类型 71
+GOTO @虾米设置模式状态
+
+#IF
+EQUAL S$当前浏览分类 其它
+#ACT
+MOV N$默认其它类型 74
+GOTO @虾米设置模式状态
+
+#IF
+#ACT
+GOTO @虾米设置模式状态
+
+[@虾米设置模式状态]
+#IF
+EQUAL S$当前操作模式 过滤设置
+#ACT
+MOV N$默认过滤类型 80
+GOTO @准备构建列表
+
+#IF
+EQUAL S$当前操作模式 存储设置
+#ACT
+MOV N$默认存储类型 83
+GOTO @准备构建列表
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV N$默认仓库类型 86
+GOTO @准备构建列表
+
+#IF
+#ACT
+GOTO @准备构建列表
+
+[@准备构建列表]
+#IF
+#ACT
+MOV N$防止死循环计数 0
+MOV S$列表显示内容 ""
+MOV S$当前页已显示列表 ""
+MOV N$每页条数 18
+MOV N$开始行 <$STR(N$当前页码)>
+DEC N$开始行 1
+MUL N$开始行 <$STR(N$每页条数)>
+MOV N$当前循环行 <$STR(N$开始行)>
+MOV S$读取文件路径 <$str(S$本地物品数据存储地址)><$STR(S$当前浏览分类)>分类.txt
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV S$当前浏览分类 所有物品
+MOV S$读取文件路径 <$str(S$仓库索引文件)>
+MOV N$当前循环行 0
+MOV N$需要跳过数量 <$STR(N$开始行)>
+MOV N$已跳过数量 0
+MOV S$分类菜单显示 ""
+
+#IF
+NOT EQUAL S$搜索关键字 ""
+#ACT
+MOV N$当前循环行 0
+MOV N$需要跳过数量 <$STR(N$开始行)>
+MOV N$已跳过数量 0
+
+#IF
+NOT EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV S$分类菜单显示 <&ImgEx:#B2~#L3:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认武器类型)>:19:20:0:0/@虾米加载类型(武器)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L4:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认衣服类型)>:22:23:90:0/@虾米加载类型(衣服)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L6:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认头盔类型)>:25:26:90:40/@虾米加载类型(头盔)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L7:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认手镯类型)>:28:29:0:40/@虾米加载类型(手镯)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L8:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认戒指类型)>:31:32:90:80/@虾米加载类型(戒指)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L9:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认项链类型)>:34:35:0:80/@虾米加载类型(项链)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L10:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认勋章类型)>:37:38:90:120/@虾米加载类型(勋章)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L11:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认腰带类型)>:40:41:0:120/@虾米加载类型(腰带)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L12:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认靴子类型)>:43:44:90:160/@虾米加载类型(靴子)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L13:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认斗笠类型)>:46:47:0:160/@虾米加载类型(斗笠)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L14:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认盾牌类型)>:49:50:90:200/@虾米加载类型(盾牌)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L15:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认宝石类型)>:52:53:0:200/@虾米加载类型(宝石)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L19:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认时装类型)>:55:56:90:240/@虾米加载类型(时装)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L17:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认毒符类型)>:58:59:0:240/@虾米加载类型(毒符)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L18:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认军鼓类型)>:61:62:90:280/@虾米加载类型(军鼓)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L16:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认马牌类型)>:64:65:0:280/@虾米加载类型(马牌)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L20:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认生肖类型)>:67:68:90:320/@虾米加载类型(生肖)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L21:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认灵玉类型)>:76:77:0:320/@虾米加载类型(灵玉)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L22:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认特殊类型)>:70:71:90:360/@虾米加载类型(特殊)>
+INC S$分类菜单显示 <&ImgEx:#B2~#L22:
+INC S$分类菜单显示 <$STR(N$虾米资源编号)>:<$str(N$默认其它类型)>:73:74:0:360/@虾米加载类型(其它)>
+
+#IF
+#ACT
+INC S$列表显示内容 <Layout:#L1~#L1_Content:0:5:582:310>
+MOV N$行数 0
+MOV N$列数 1
+MOV N$物品坐标X 5
+MOV N$TEXT坐标X 60
+MOV N$Img坐标X 60
+MOV N$物品坐标Y 5
+MOV N$TEXT坐标Y 32
+MOV N$Img坐标Y 32
+MOV N$TEXT2坐标X 66
+MOV N$TEXT2坐标Y 32
+
+#IF
+EQUAL S$当前浏览分类 所有物品
+#ACT
+MOV S$读取文件路径 <$str(S$本地物品数据存储地址)>所有物品.txt
+
+#IF
+EQUAL S$当前浏览分类 所有物品
+NOT EQUAL S$UI搜索关键字 ""
+#ACT
+MOV S$读取文件路径 ..\QuestDiary\ggjfl\SearchCache_<$USERID>.txt
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV S$读取文件路径 <$str(S$仓库索引文件)>
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV N$仓库文件行数 0
+GetTextLineCount <$STR(S$读取文件路径)> N$仓库文件行数
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV N$总物品数量 <$STR(N$仓库文件行数)>
+
+#IF
+NOT EQUAL S$当前操作模式 仓库取物
+EQUAL S$UI搜索关键字 ""
+#ACT
+MOV N$总物品数量 0
+ReadConfigFileItem ..\QuestDiary\ggjfl\LineCounts.ini Counts <$STR(S$当前浏览分类)> S$临时行数
+MOV N$总物品数量 <$STR(S$临时行数)>
+
+#IF
+NOT EQUAL S$当前操作模式 仓库取物
+NOT EQUAL S$UI搜索关键字 ""
+#ACT
+GetTextLineCount <$STR(S$读取文件路径)> N$总物品数量
+
+#IF
+NOT EQUAL S$当前操作模式 仓库取物
+EQUAL S$UI搜索关键字 ""
+EQUAL N$总物品数量 0
+#ACT
+GetTextLineCount <$STR(S$读取文件路径)> N$总物品数量
+WriteConfigFileItem ..\QuestDiary\ggjfl\LineCounts.ini Counts <$STR(S$当前浏览分类)> <$STR(N$总物品数量)>
+
+#IF
+#ACT
+MOV N$启用列表缓存 0
+
+#IF
+NOT EQUAL S$搜索关键字 ""
+#ACT
+MOV N$启用列表缓存 1
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV N$启用列表缓存 0
+
+#IF
+EQUAL N$启用列表缓存 1
+#ACT
+GOTO @检查并构建列表缓存
+BREAK
+
+#IF
+#ACT
+MOV S$显示数量 (共<$STR(N$总物品数量)>件)
+MOV N$循环计数器 0
+GOTO @虾米循环读取行
+
+[@检查并构建列表缓存]
+#IF
+#ACT
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV S$列表缓存Key <$STR(S$当前操作模式)>|<$STR(S$当前浏览分类)>|<$STR(S$搜索关键字)>|<$STR(S$读取文件路径)>|<$STR(N$总物品数量)>
+
+#IF
+NOT EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV S$列表缓存Key <$STR(S$当前操作模式)>|<$STR(S$当前浏览分类)>|<$STR(S$搜索关键字)>|<$STR(S$读取文件路径)>
+
+#IF
+EQUAL <$STR(S$列表缓存Key)> <$STR(S$上次列表缓存Key)>
+#ACT
+GOTO @列表缓存构建完成
+BREAK
+
+#IF
+#ACT
+MOV S$上次列表缓存Key <$STR(S$列表缓存Key)>
+MOV L$列表缓存 []
+MOV N$列表缓存数量 0
+MOV S$列表缓存去重 ""
+MOV N$列表缓存源行 0
+MOV N$列表缓存命中数 0
+MOV N$防止死循环计数 0
+GOTO @列表缓存构建循环
+BREAK
+
+[@列表缓存构建循环]
+#IF
+#ACT
+MOV N$列表缓存构建结束 0
+MOV N$防止死循环计数 0
+Loopgoto @列表缓存构建循环_单步 201
+
+#IF
+EQUAL N$列表缓存构建结束 1
+#ACT
+MOV N$列表缓存数量 <$STR(N$列表缓存命中数)>
+GOTO @列表缓存构建完成
+BREAK
+
+#IF
+#ACT
+DELAYGOTO 1 @列表缓存构建循环
+BREAK
+
+[@列表缓存构建循环_单步]
+#IF
+NOT SMALL N$列表缓存源行 <$STR(N$总物品数量)>
+#ACT
+MOV N$列表缓存构建结束 1
+endloop
+break
+
+#IF
+#ACT
+INC N$防止死循环计数 1
+MOV S$物品ID ""
+MOV S$物品名称 ""
+MOV S$临时行内容 ""
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV S$物品名称 ""
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+SMALL N$列表缓存源行 <$STR(N$仓库文件行数)>
+#ACT
+GetListString <$STR(S$读取文件路径)> <$STR(N$列表缓存源行)> S$物品名称
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+NOT SMALL N$列表缓存源行 <$STR(N$仓库文件行数)>
+#ACT
+MOV N$仓库内存读取索引 <$STR(N$列表缓存源行)>
+DEC N$仓库内存读取索引 <$STR(N$仓库文件行数)>
+MOV S$物品名称 <$str(L$仓库列表快照[<$STR(N$仓库内存读取索引)>])>
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+TextReplace <$STR(S$物品名称)> " " "" S$物品名称 0 0
+TextReplace <$STR(S$物品名称)> "　" "" S$物品名称 0 0
+TextReplace <$STR(S$物品名称)> "	" "" S$物品名称 0 0
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+EQUAL S$物品名称 ""
+#ACT
+INC N$列表缓存源行 1
+break
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+EQUAL S$物品名称 " "
+#ACT
+INC N$列表缓存源行 1
+break
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+EQUAL S$物品名称 "  "
+#ACT
+INC N$列表缓存源行 1
+break
+
+#IF
+NOT EQUAL S$当前操作模式 仓库取物
+#ACT
+GetListString <$STR(S$读取文件路径)> <$STR(N$列表缓存源行)> S$临时行内容
+
+#IF
+NOT EQUAL S$当前操作模式 仓库取物
+EQUAL S$临时行内容 ""
+#ACT
+INC N$列表缓存源行 1
+break
+
+#IF
+NOT EQUAL S$当前操作模式 仓库取物
+#ACT
+TextReplace <$STR(S$临时行内容)> ":" "|" S$临时行内容 0 0
+ExtractStringEx "|" <$STR(S$临时行内容)> S$分解内容
+MOV S$物品ID <$STR(S$分解内容1)>
+MOV S$物品名称 <$STR(S$分解内容2)>
+
+#IF
+EQUAL S$物品名称 ""
+#ACT
+INC N$列表缓存源行 1
+break
+
+#IF
+EQUAL S$物品名称 " "
+#ACT
+INC N$列表缓存源行 1
+break
+
+#IF
+EQUAL S$物品名称 "  "
+#ACT
+INC N$列表缓存源行 1
+break
+
+#IF
+NOT EQUAL S$搜索关键字 ""
+NOT CheckContainsText <$STR(S$物品名称)> <$STR(S$搜索关键字)>
+#ACT
+INC N$列表缓存源行 1
+break
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+CheckContainsText <$STR(S$列表缓存去重)> |<$STR(S$物品名称)>|
+#ACT
+INC N$列表缓存源行 1
+break
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+INC S$列表缓存去重 |<$STR(S$物品名称)>|
+INC L$列表缓存 <$STR(S$物品名称)>
+INC N$列表缓存命中数 1
+INC N$列表缓存源行 1
+break
+
+#IF
+NOT EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV S$临时行内容 <$STR(S$物品ID)>:<$STR(S$物品名称)>
+INC L$列表缓存 <$STR(S$临时行内容)>
+INC N$列表缓存命中数 1
+INC N$列表缓存源行 1
+break
+
+[@列表缓存构建完成]
+#IF
+#ACT
+MOV N$总物品数量 <$STR(N$列表缓存数量)>
+MOV S$显示数量 (共<$STR(N$总物品数量)>件)
+MOV N$循环计数器 0
+MOV N$需要跳过数量 0
+MOV N$已跳过数量 0
+MOV S$当前页已显示列表 ""
+MOV N$当前循环行 <$STR(N$当前页码)>
+DEC N$当前循环行 1
+MUL N$当前循环行 <$STR(N$每页条数)>
+GOTO @虾米循环读取行
+
+[@虾米循环读取行]
+#IF
+#ACT
+MOV N$虾米读取结束 0
+MOV N$防止死循环计数 0
+Loopgoto @虾米循环读取行_单步 121
+
+#IF
+EQUAL N$虾米读取结束 1
+#ACT
+GOTO @显示最终界面
+BREAK
+
+#IF
+#ACT
+DELAYGOTO 1 @虾米循环读取行
+BREAK
+
+[@虾米循环读取行_单步]
+#IF
+NOT SMALL N$当前循环行 <$STR(N$总物品数量)>
+#ACT
+MOV N$虾米读取结束 1
+endloop
+break
+
+#IF
+LARGE N$循环计数器 17
+#ACT
+MOV N$虾米读取结束 1
+endloop
+break
+
+#IF
+#ACT
+INC N$防止死循环计数 1
+MOV S$物品ID ""
+MOV S$物品名称 ""
+MOV S$临时行内容 ""
+MOV N$读取行 <$STR(N$当前循环行)>
+
+#IF
+EQUAL N$启用列表缓存 1
+EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV S$物品名称 <$str(L$列表缓存[<$str(N$读取行)>])>
+
+#IF
+EQUAL N$启用列表缓存 0
+EQUAL S$当前操作模式 仓库取物
+#ACT
+GetListString <$STR(S$读取文件路径)> <$STR(N$读取行)> S$物品名称
+
+#IF
+NOT EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV S$临时行内容 <$str(L$列表缓存[<$str(N$读取行)>])>
+
+#IF
+EQUAL N$启用列表缓存 0
+NOT EQUAL S$当前操作模式 仓库取物
+#ACT
+GetListString <$STR(S$读取文件路径)> <$STR(N$读取行)> S$临时行内容
+
+#IF
+NOT EQUAL S$当前操作模式 仓库取物
+NOT EQUAL S$临时行内容 ""
+#ACT
+TextReplace <$STR(S$临时行内容)> ":" "|" S$临时行内容 0 0
+ExtractStringEx "|" <$STR(S$临时行内容)> S$分解内容
+MOV S$物品ID <$STR(S$分解内容1)>
+MOV S$物品名称 <$STR(S$分解内容2)>
+MOV N$物品ID <$STR(S$物品ID)>
+
+#IF
+EQUAL S$物品名称 ""
+#ACT
+INC N$当前循环行 1
+break
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+CheckContainsText <$STR(S$当前页已显示列表)> |<$STR(S$物品名称)>|
+#ACT
+INC N$当前循环行 1
+break
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+INC S$当前页已显示列表 |<$STR(S$物品名称)>|
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+GetDBItemFieldValue <$STR(S$物品名称)> idx S$物品ID
+MOV N$物品ID <$STR(S$物品ID)>
+
+#IF
+EQUAL S$物品ID ""
+#ACT
+INC N$当前循环行 1
+break
+
+#IF
+EQUAL S$物品名称 " "
+#ACT
+INC N$当前循环行 1
+break
+
+#IF
+EQUAL S$物品名称 "  "
+#ACT
+INC N$当前循环行 1
+break
+
+#IF
+NOT EQUAL S$搜索关键字 ""
+NOT CheckContainsText <$STR(S$物品名称)> <$STR(S$搜索关键字)>
+#ACT
+INC N$当前循环行 1
+break
+
+#IF
+#ACT
+MOV N$过滤状态 0
+MOV N$存储状态 0
+MOV N$仓库数量 0
+
+MOV S$显示名称 <$STR(S$物品名称)>
+#IF
+CheckContainsText <$STR(S$物品名称)> <
+#ACT
+MOV S$显示名称 特殊符号
+#IF
+CheckContainsText <$STR(S$物品名称)> >
+#ACT
+MOV S$显示名称 特殊符号
+
+
+#IF
+NOT EQUAL S$当前操作模式 仓库取物
+NOT EQUAL S$搜索关键字 ""
+SMALL N$已跳过数量 <$STR(N$需要跳过数量)>
+#ACT
+INC N$已跳过数量 1
+INC N$当前循环行 1
+break
+
+#IF
+EQUAL S$当前操作模式 过滤设置
+#ACT
+#IF
+EQUAL S$用户数据存储地址 ""
+#ACT
+MOV S$用户数据存储地址 ..\..\..\..\通区文件\<$SERVERNAME>\<$USERID>_<$USERNAME>.ini
+#IF
+#ACT
+ReadConfigFileItem S$用户数据存储地址 过滤物品 <$STR(S$物品名称)> <$STR(N$过滤状态)>
+
+#IF
+EQUAL S$当前操作模式 存储设置
+#ACT
+#IF
+EQUAL S$用户数据存储地址 ""
+#ACT
+MOV S$用户数据存储地址 ..\..\..\..\通区文件\<$SERVERNAME>\<$USERID>_<$USERNAME>.ini
+#IF
+#ACT
+ReadConfigFileItem S$用户数据存储地址 存储物品 <$STR(S$物品名称)> <$STR(N$存储状态)>
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+#IF
+EQUAL S$用户数据存储地址 ""
+#ACT
+MOV S$用户数据存储地址 ..\..\..\..\通区文件\<$SERVERNAME>\<$USERID>_<$USERNAME>.ini
+#IF
+#ACT
+ReadConfigFileItem S$仓库数量文件 仓库数量 <$STR(S$物品名称)> <$STR(N$仓库数量)>
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+SMALL N$仓库数量 1
+#ACT
+INC N$当前循环行 1
+break
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+SMALL N$已跳过数量 <$STR(N$需要跳过数量)>
+#ACT
+INC N$已跳过数量 1
+INC N$当前循环行 1
+break
+
+#IF
+NOT EQUAL S$搜索关键字 ""
+SMALL N$已跳过数量 <$STR(N$需要跳过数量)>
+#ACT
+INC N$已跳过数量 1
+INC N$当前循环行 1
+break
+
+#IF
+EQUAL S$当前操作模式 过滤设置
+EQUAL N$过滤状态 0
+#ACT
+MOV N$过滤状态 87
+
+#IF
+EQUAL S$当前操作模式 存储设置
+EQUAL N$存储状态 0
+#ACT
+MOV N$存储状态 87
+
+#IF
+EQUAL S$物品名称 ""
+#ACT
+INC N$当前循环行 1
+break
+
+#IF
+EQUAL N$列数 1
+#ACT
+MUL N$物品坐标Y N$行数 50
+MUL N$TEXT坐标Y N$行数 50
+MUL N$Img坐标Y N$行数 50
+MUL N$TEXT2坐标Y N$行数 50
+INC N$物品坐标Y 5
+INC N$TEXT坐标Y 5
+INC N$Img坐标Y 25
+INC N$TEXT2坐标Y 28
+
+#IF
+EQUAL N$列数 2
+#ACT
+INC N$物品坐标X 200
+INC N$TEXT坐标X 200
+INC N$Img坐标X 200
+INC N$TEXT2坐标X 200
+
+#IF
+EQUAL N$列数 3
+#ACT
+INC N$物品坐标X 400
+INC N$TEXT坐标X 400
+INC N$Img坐标X 400
+INC N$TEXT2坐标X 400
+
+#IF
+EQUAL S$当前操作模式 过滤设置
+#ACT
+INC S$列表显示内容 <&Img:#L1_Content~:<$STR(N$过滤状态)>:<$STR(N$虾米资源编号)>:<$STR(N$Img坐标X)>:<$STR(N$Img坐标Y)>|161#点击过滤[<$STR(S$显示名称)>]/@执行操作(<$STR(S$物品名称)>)>
+
+#IF
+EQUAL S$当前操作模式 存储设置
+#ACT
+INC S$列表显示内容 <&Img:#L1_Content~:<$STR(N$存储状态)>:<$STR(N$虾米资源编号)>:<$STR(N$Img坐标X)>:<$STR(N$Img坐标Y)>|161#点击存储[<$STR(S$显示名称)>]/@执行操作(<$STR(S$物品名称)>)>
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV N$临时名字Y <$STR(N$物品坐标Y)>
+MOV N$临时数量X <$STR(N$Img坐标X)>
+INC N$临时数量X 45
+INC S$列表显示内容 <&ImgEx:#L1_Content~:<$STR(N$虾米资源编号)>:98:97:99:<$STR(N$Img坐标X)>:<$STR(N$Img坐标Y)>|161#点击取出物品[<$STR(S$显示名称)>]/@取出物品(<$STR(S$物品名称)>,<$STR(N$物品ID)>,<$STR(N$仓库数量)>,0)>
+INC S$列表显示内容 <&Text:#L1_Content~:取出:<$STR(N$TEXT2坐标X)>:<$STR(N$TEXT2坐标Y)>{FCOLOR=251;FSIZE=10;FNAME=宋体}>
+INC S$列表显示内容 <&itemshow:#L1_Content~:<$STR(N$物品ID)>:0:<$STR(N$物品坐标X)>:<$STR(N$物品坐标Y)>:1:0:0:0/@加载怪物集合(<$STR(S$物品名称)>,0)>
+INC S$列表显示内容 <&Text:#L1_Content~:<$STR(S$显示名称)>:<$STR(N$TEXT坐标X)>:<$STR(N$临时名字Y)>{FCOLOR=159;FSIZE=12;FNAME=黑体}>
+INC S$列表显示内容 <&Text:#L1_Content~:<$STR(N$仓库数量)>件:<$STR(N$临时数量X)>:<$STR(N$TEXT2坐标Y)>{FCOLOR=250;FSIZE=12;FNAME=宋体}>
+
+#IF
+NOT EQUAL S$当前操作模式 仓库取物
+#ACT
+INC S$列表显示内容 <&itemshow:#L1_Content~:<$STR(N$物品ID)>:0:<$STR(N$物品坐标X)>:<$STR(N$物品坐标Y)>:1:0:0:0/@加载怪物集合(<$STR(S$物品名称)>,0)>
+INC S$列表显示内容 <&Text:#L1_Content~:<$STR(S$显示名称)>:<$STR(N$TEXT坐标X)>:<$STR(N$TEXT坐标Y)>{FCOLOR=159;FSIZE=12;FNAME=黑体}>
+
+#IF
+EQUAL N$列数 2
+#ACT
+DEC N$物品坐标X 200
+DEC N$TEXT坐标X 200
+DEC N$Img坐标X 200
+DEC N$TEXT2坐标X 200
+
+#IF
+EQUAL N$列数 3
+#ACT
+DEC N$物品坐标X 400
+DEC N$TEXT坐标X 400
+DEC N$Img坐标X 400
+DEC N$TEXT2坐标X 400
+INC N$行数 1
+MOV N$列数 0
+
+#IF
+#ACT
+INC N$列数 1
+INC N$循环计数器 1
+INC N$当前循环行 1
+break
+
+
+
+[@显示最终界面]
+#IF
+#ACT
+OPENMERCHANTBIGDLG <$str(N$虾米资源编号)> 9 1 4 0 -60 1 930 110
+#SAY
+<MONSTER:<$STR(N$怪物RaceImg)>:<$STR(N$怪物APPR)>:11:4:590:625>
+<&INPUTTEXT:1:240:132:250:20:-1:-1:246:0:40:无搜索关键字:输入名称进行搜索(支持模糊搜索):160>
+<&ImgEx:<$STR(N$虾米资源编号)>:104:105:106:498:129:1/@查询过滤存储物品>
+<&Layout:~#B2:130:180:180:510>
+<$STR(S$分类菜单显示)>
+<&ImgEx:#B2~#L23:<$STR(N$虾米资源编号)>:<$str(N$默认过滤类型)>:79:80:0:440/@虾米切换模式(过滤设置)>
+<&ImgEx:#B2~#L24:<$STR(N$虾米资源编号)>:<$str(N$默认存储类型)>:82:83:90:440/@虾米切换模式(存储设置)>
+<&ImgEx:#B2~#L25:<$STR(N$虾米资源编号)>:<$str(N$默认仓库类型)>:85:86:45:480/@虾米切换模式(仓库取物)>
+
+<&Layout:~#B3:335:170:590:380:9>
+<&Text:#B3~#T1:分类：<$STR(S$当前浏览分类)>   模式：<$STR(S$当前操作模式)>:140:10{FCOLOR=250;FSIZE=18;FNAME=黑体}>
+<&Text:#B3~#T1:物品数量：<$str(S$显示数量)>:10:40{FCOLOR=250;FSIZE=12;FNAME=黑体}>
+<&ListView:#B3~#L1:0:60:582:310:0:0:0:0:0:0>
+
+<&Text:[上一页]:550:555/@虾米上一页>   <&Text:第 <$STR(N$当前页码)> 页:610:555{FCOLOR=251}>   <&Text:[下一页]:670:555/@虾米下一页>
+<&Text:[一键背包存储]|一键储存背包里已勾选物品:350:555/@开启背包存储>   <&Text:[本页全选]:480:555/@全选本页>   <&Text:[本页否选]:730:555/@全不选本页>   <&Text:<$STR(S$背包存储_定时勾选)>自动存储|开启自动存储背包里已勾选物品:830:555/@背包存储定时器开关>
+
+<$STR(S$列表显示内容)>
+
+<&Layout:~#B4:335:570:234:114:9>
+<Text:#B4~#T1:以下怪物掉落:0:2{FCOLOR=230;FSIZE=11;FNAME=黑体}>
+<Text:#B4~#T1:[<$str(S$掉落物品名称)>]:0:2{FCOLOR=224;FSIZE=11;FNAME=黑体}>
+<&ListView:#B4~#L2:0:14:230:100:0:<$STR(N$跳到第几个怪物容器)>:0:0:0:0:<$STR(N$虾米资源编号)>:17:2:3:4:16:8:8:5:6:7>
+<$str(S$怪物集合内容)>
+
+<&Layout:~#B6:700:570:227:114:9>
+<Text:#B6~#T1:怪物:0:2{FCOLOR=230;FSIZE=11;FNAME=黑体}>
+<Text:#B6~#T1:[<$str(S$刷新怪物名称)>]:0:2{FCOLOR=224;FSIZE=11;FNAME=黑体}>
+<Text:#B6~#T1:刷新地图:0:2{FCOLOR=230;FSIZE=11;FNAME=黑体}>
+<&ListView:#B6~#L3:0:14:222:100:0:0:0:0:0:0:<$STR(N$虾米资源编号)>:17:2:3:4:16:8:8:5:6:7>
+<$str(S$地图集合内容)>
+
+[@查询过滤存储物品]
+#IF
+equal <$NPCINPUT(1)> ""
+#ACT
+MESSAGEBOX 请先输入要搜索的物品名称。
+BREAK
+
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV S$读取文件路径 <$str(S$仓库索引文件)>
+MOV S$搜索关键字 <$NPCINPUT(1)>
+MOV N$当前页码 1
+GOTO @开始构建列表界面
+BREAK
+
+#IF
+#ACT
+MOV S$当前浏览分类 所有物品
+MOV S$UI搜索关键字 <$NPCINPUT(1)>
+MOV S$搜索关键字 <$NPCINPUT(1)>
+MOV S$读取文件路径 <$str(S$本地物品数据存储地址)>所有物品.txt
+MOV N$当前页码 1
+GOTO @开始搜索构建
+BREAK
+
+[@开始搜索构建]
+#IF
+#ACT
+MOV S$搜索缓存文件 ..\QuestDiary\ggjfl\SearchCache_<$USERID>.txt
+ClearNameList <$STR(S$搜索缓存文件)>
+MOV N$搜索命中数 0
+MOV N$搜索最大结果 180
+MOV N$搜索当前分类序号 1
+MOV N$防止死循环计数 0
+GOTO @搜索切换分类
+
+[@搜索切换分类]
+#IF
+LARGE N$搜索当前分类序号 18
+#ACT
+MOV S$读取文件路径 <$STR(S$搜索缓存文件)>
+MOV S$搜索关键字 ""
+GOTO @开始构建列表界面
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 1
+#ACT
+MOV S$搜索分类名 武器
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 2
+#ACT
+MOV S$搜索分类名 衣服
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 3
+#ACT
+MOV S$搜索分类名 头盔
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 4
+#ACT
+MOV S$搜索分类名 斗笠
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 5
+#ACT
+MOV S$搜索分类名 项链
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 6
+#ACT
+MOV S$搜索分类名 勋章
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 7
+#ACT
+MOV S$搜索分类名 手镯
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 8
+#ACT
+MOV S$搜索分类名 戒指
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 9
+#ACT
+MOV S$搜索分类名 毒符
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 10
+#ACT
+MOV S$搜索分类名 盾牌
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 11
+#ACT
+MOV S$搜索分类名 靴子
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 12
+#ACT
+MOV S$搜索分类名 腰带
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 13
+#ACT
+MOV S$搜索分类名 宝石
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 14
+#ACT
+MOV S$搜索分类名 灵玉
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 15
+#ACT
+MOV S$搜索分类名 时装
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 16
+#ACT
+MOV S$搜索分类名 生肖
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 17
+#ACT
+MOV S$搜索分类名 特殊
+GOTO @搜索设置文件
+BREAK
+
+#IF
+EQUAL N$搜索当前分类序号 18
+#ACT
+MOV S$搜索分类名 其它
+GOTO @搜索设置文件
+BREAK
+
+#IF
+#ACT
+MOV S$读取文件路径 <$STR(S$搜索缓存文件)>
+MOV S$搜索关键字 ""
+GOTO @开始构建列表界面
+BREAK
+
+[@搜索设置文件]
+#IF
+#ACT
+MOV S$搜索名称文件 ..\QuestDiary\ggjfl\<$STR(S$搜索分类名)>名称.txt
+MOV S$搜索显示文件 ..\QuestDiary\ggjfl\<$STR(S$搜索分类名)>显示.txt
+GOTO @搜索准备单文件
+BREAK
+
+[@搜索准备单文件]
+#IF
+#ACT
+GetTextLineCount <$STR(S$搜索名称文件)> N$搜索总行数
+MOV N$搜索当前行 0
+GOTO @搜索构建循环
+
+[@搜索构建循环]
+#IF
+#ACT
+MOV N$搜索构建结束类型 0
+MOV N$防止死循环计数 0
+Loopgoto @搜索构建循环_单步 121
+
+#IF
+EQUAL N$搜索构建结束类型 1
+#ACT
+INC N$搜索当前分类序号 1
+GOTO @搜索切换分类
+BREAK
+
+#IF
+EQUAL N$搜索构建结束类型 2
+#ACT
+MOV S$读取文件路径 <$STR(S$搜索缓存文件)>
+MOV S$搜索关键字 ""
+GOTO @开始构建列表界面
+BREAK
+
+#IF
+#ACT
+DELAYGOTO 1 @搜索构建循环
+BREAK
+
+[@搜索构建循环_单步]
+#IF
+LARGE N$搜索当前行 <$STR(N$搜索总行数)>
+#ACT
+MOV N$搜索构建结束类型 1
+endloop
+break
+
+#IF
+LARGE N$搜索命中数 <$STR(N$搜索最大结果)>
+#ACT
+MOV N$搜索构建结束类型 2
+endloop
+break
+
+#IF
+#ACT
+INC N$防止死循环计数 1
+MOV N$当前搜索索引 <$STR(N$搜索当前行)>
+GetListString <$STR(S$搜索名称文件)> <$STR(N$当前搜索索引)> S$物品名称
+INC N$搜索当前行 1
+
+#IF
+EQUAL S$物品名称 ""
+#ACT
+break
+
+#IF
+NOT CheckContainsText <$STR(S$物品名称)> <$STR(S$UI搜索关键字)>
+#ACT
+break
+
+#IF
+#ACT
+GetListString <$STR(S$搜索显示文件)> <$STR(N$当前搜索索引)> N$物品ID S$物品名称
+MOV S$临时行内容 <$STR(N$物品ID)>:<$STR(S$物品名称)>
+AddTextList <$STR(S$搜索缓存文件)> <$STR(S$临时行内容)>
+
+#IF
+#ACT
+INC N$搜索命中数 1
+
+
+[@虾米切换模式]
+#IF
+EQUAL S$当前操作模式 <$SCRIPTPARAM1>
+#ACT
+BREAK
+
+#IF
+#ACT
+MOV S$当前操作模式 <$SCRIPTPARAM1>
+MOV N$当前页码 1
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+MOV S$搜索关键字 ""
+MOV S$UI搜索关键字 ""
+
+#IF
+NOT EQUAL S$当前操作模式 仓库取物
+EQUAL S$当前浏览分类 所有物品
+#ACT
+MOV S$当前浏览分类 武器
+
+#IF
+#ACT
+GOTO @咕咕鸡过滤
+BREAK
+
+[@虾米加载类型]
+#IF
+#ACT
+MOV S$当前浏览分类 <$SCRIPTPARAM1>
+MOV N$当前页码 1
+GOTO @咕咕鸡过滤
+BREAK
+
+[@虾米上一页]
+#IF
+LARGE N$当前页码 1
+#ACT
+DEC N$当前页码 1
+GOTO @咕咕鸡过滤
+#ELSEACT
+MESSAGEBOX 已经是第一页了
+BREAK
+
+[@虾米下一页]
+#IF
+EQUAL N$启用列表缓存 1
+#ACT
+MOV N$下一页检查 <$STR(N$当前页码)>
+MUL N$下一页检查 <$STR(N$每页条数)>
+
+#IF
+EQUAL N$启用列表缓存 1
+NOT LARGE N$总物品数量 <$STR(N$下一页检查)>
+#ACT
+MESSAGEBOX 已经是最后一页了
+BREAK
+
+#IF
+EQUAL N$启用列表缓存 1
+#ACT
+INC N$当前页码 1
+GOTO @咕咕鸡过滤
+BREAK
+
+#IF
+NOT EQUAL S$搜索关键字 ""
+SMALL N$循环计数器 18
+#ACT
+MESSAGEBOX 已经是最后一页了
+BREAK
+
+#IF
+EQUAL S$搜索关键字 ""
+#ACT
+MOV N$下一页检查 <$STR(N$当前页码)>
+MUL N$下一页检查 18
+
+#IF
+EQUAL S$搜索关键字 ""
+NOT LARGE N$总物品数量 <$STR(N$下一页检查)>
+#ACT
+MESSAGEBOX 已经是最后一页了
+BREAK
+
+#IF
+#ACT
+INC N$当前页码 1
+GOTO @咕咕鸡过滤
+BREAK
+
+[@执行操作]
+#IF
+#ACT
+MOV S$操作物品名 <$SCRIPTPARAM1>
+
+#IF
+EQUAL S$当前操作模式 过滤设置
+#ACT
+GOTO @获取过滤状态_单次
+GOTO @处理过滤操作
+BREAK
+
+#IF
+EQUAL S$当前操作模式 存储设置
+#ACT
+GOTO @获取存储状态_单次
+GOTO @处理存储操作
+BREAK
+
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+GOTO @获取仓库数量_单次
+BREAK
+
+[@处理过滤操作]
+#IF
+EQUAL N$当前状态 88
+#ACT
+GOTO @设置过滤状态_关闭
+#ELSEACT
+GOTO @设置过滤状态_开启
+#IF
+#ACT
+GOTO @咕咕鸡过滤
+BREAK
+
+[@处理存储操作]
+#IF
+EQUAL N$当前状态 88
+#ACT
+GOTO @设置存储状态_关闭
+#ELSEACT
+GOTO @设置存储状态_开启
+#IF
+
+#ACT
+GOTO @咕咕鸡过滤
+BREAK
+
+[@全选本页]
+#ACT
+MOV N$批量操作目标状态 88
+MOV N$防止死循环计数 0
+GOTO @执行批量操作
+
+[@全不选本页]
+#ACT
+MOV N$批量操作目标状态 87
+MOV N$防止死循环计数 0
+GOTO @执行批量操作
+
+[@背包存储定时器开关]
+#IF
+#ACT
+MOV N$背包存储_定时开关 0
+ReadConfigFileItem S$用户数据存储地址 咕咕鸡过滤 背包存储定时 N$背包存储_定时开关
+
+#IF
+EQUAL N$背包存储_定时开关 1
+#ACT
+WriteConfigFileItem S$用户数据存储地址 咕咕鸡过滤 背包存储定时 0
+SetOffTimer 51
+SendMsg 6 自动背包存储：已关闭
+GOTO @咕咕鸡过滤
+BREAK
+
+#IF
+#ACT
+WriteConfigFileItem S$用户数据存储地址 咕咕鸡过滤 背包存储定时 1
+SetOnTimer 51 2
+SendMsg 6 自动背包存储：已开启,2秒执行一次
+GOTO @咕咕鸡过滤
+BREAK
+
+[@开启背包存储]
+#IF
+#ACT
+MOV N$背包存储_总存入 0
+MOV N$背包存储_背包数量 0
+MOV N$背包存储_当前索引 0
+MOV N$背包存储_是否存储 0
+MOV N$背包存储_本次存入 0
+MOV N$背包存储_背包数量_前 0
+MOV N$背包存储_背包数量_后 0
+MOV N$背包存储_仓库原数量 0
+MOV N$背包存储_仓库新数量 0
+MOV N$背包存储_仓库索引 0
+MOV S$背包存储_物品名称 ""
+MOV S$背包存储_物品显示名 ""
+MOV S$背包存储_提示明细 ""
+MOV S$背包存储_单项提示 ""
+MOV S$背包存储_已处理Key "|"
+MOV S$背包存储_检查Key ""
+
+#IF
+EQUAL S$用户数据存储地址 ""
+#ACT
+MOV S$用户数据存储地址 ..\..\..\..\通区文件\<$SERVERNAME>\<$USERID>_<$USERNAME>.ini
+
+#IF
+#ACT
+MOV S$仓库索引文件 ..\..\..\..\通区文件\<$SERVERNAME>\仓库索引_<$USERID>_<$USERNAME>.txt
+MOV S$仓库数量文件 ..\..\..\..\通区文件\<$SERVERNAME>\仓库数量_<$USERID>_<$USERNAME>.txt
+
+#IF
+#ACT
+GetBagInfo ItemCount N$背包存储_背包数量
+
+#IF
+SMALL N$背包存储_背包数量 1
+#ACT
+SendMsg 6 背包存储：背包内没有可处理物品。
+GOTO @咕咕鸡过滤
+BREAK
+
+#IF
+#ACT
+Loopgoto @开启背包存储_单步 <$STR(N$背包存储_背包数量)>
+
+#IF
+LARGE N$背包存储_总存入 0
+#ACT
+SendMsg 6 背包存储：已存入<$STR(S$背包存储_提示明细)>件。
+MOV S$上次列表缓存Key ""
+GOTO @咕咕鸡过滤
+BREAK
+
+[@开启背包存储_单步]
+#IF
+#ACT
+MOV S$背包存储_物品名称 ""
+ MOV S$背包存储_物品显示名 ""
+MOV N$背包存储_本次索引 <$STR(N$背包存储_当前索引)>
+GetBagItemFieldValue 0 <$STR(N$背包存储_本次索引)> name S$背包存储_物品名称
+ GetBagItemFieldValue 0 <$STR(N$背包存储_本次索引)> name_g S$背包存储_物品显示名
+INC N$背包存储_当前索引 1
+MOV S$背包存储_检查Key |<$STR(S$背包存储_物品名称)>|
+
+#IF
+EQUAL S$背包存储_物品名称 ""
+#ACT
+break
+
+#IF
+EQUAL S$背包存储_物品显示名 ""
+#ACT
+MOV S$背包存储_物品显示名 <$STR(S$背包存储_物品名称)>
+
+#IF
+CheckContainsText <$STR(S$背包存储_已处理Key)> <$STR(S$背包存储_检查Key)>
+#ACT
+break
+
+#IF
+#ACT
+INC S$背包存储_已处理Key <$STR(S$背包存储_检查Key)>
+
+#IF
+#ACT
+MOV N$背包存储_是否存储 0
+ReadConfigFileItem S$用户数据存储地址 存储物品 <$STR(S$背包存储_物品名称)> <$STR(N$背包存储_是否存储)>
+
+#IF
+NOT EQUAL N$背包存储_是否存储 88
+#ACT
+break
+
+#IF
+#ACT
+MOV N$背包存储_本次存入 0
+MOV N$背包存储_背包数量_前 0
+MOV N$背包存储_背包数量_后 0
+GetBagItemCount <$STR(S$背包存储_物品名称)> N$背包存储_背包数量_前
+
+#IF
+SMALL N$背包存储_背包数量_前 1
+#ACT
+break
+
+#IF
+CheckContainsText <$STR(S$背包存储_物品显示名)> 绑定
+#ACT
+break
+
+#IF
+CheckContainsText <$STR(S$背包存储_物品显示名)> 已绑定
+#ACT
+break
+
+#IF
+CheckContainsText <$STR(S$背包存储_物品显示名)> (绑
+#ACT
+break
+
+#IF
+CheckContainsText <$STR(S$背包存储_物品显示名)> （绑
+#ACT
+break
+
+#IF
+CheckContainsText <$STR(S$背包存储_物品显示名)> [绑
+#ACT
+break
+
+#IF
+#ACT
+MOV N$背包存储_物品MakeIndex 0
+GetBagItemFieldValue 0 <$STR(N$背包存储_本次索引)> makeindex N$背包存储_物品MakeIndex
+GiveBoxItemEx 31 <$STR(N$背包存储_物品MakeIndex)>
+
+#IF
+EQUAL <$BOXITEM[31].MAKEINDEX> <$STR(N$背包存储_物品MakeIndex)>
+CheckItemState boxitem31 0
+#ACT
+ReturnBoxItem 31
+break
+
+#IF
+EQUAL <$BOXITEM[31].MAKEINDEX> <$STR(N$背包存储_物品MakeIndex)>
+CheckItemState boxitem31 4
+#ACT
+ReturnBoxItem 31
+break
+
+#IF
+EQUAL <$BOXITEM[31].MAKEINDEX> <$STR(N$背包存储_物品MakeIndex)>
+CheckItemState boxitem31 5
+#ACT
+ReturnBoxItem 31
+break
+
+#IF
+#ACT
+ReturnBoxItem 31
+
+#IF
+#ACT
+take <$STR(S$背包存储_物品名称)> <$STR(N$背包存储_背包数量_前)> 0 0 1 0
+GetBagItemCount <$STR(S$背包存储_物品名称)> N$背包存储_背包数量_后
+FORMULATION <$STR(N$背包存储_背包数量_前)>-<$STR(N$背包存储_背包数量_后)> N$背包存储_本次存入
+
+#IF
+SMALL N$背包存储_本次存入 1
+#ACT
+break
+
+#IF
+#ACT
+INC N$背包存储_总存入 <$STR(N$背包存储_本次存入)>
+MOV S$背包存储_单项提示 <$STR(S$背包存储_物品名称)>x<$STR(N$背包存储_本次存入)>
+
+#IF
+NOT EQUAL S$背包存储_提示明细 ""
+#ACT
+INC S$背包存储_提示明细 ，
+
+#IF
+#ACT
+INC S$背包存储_提示明细 <$STR(S$背包存储_单项提示)>
+
+MOV N$背包存储_仓库原数量 0
+ReadConfigFileItem S$仓库数量文件 仓库数量 <$STR(S$背包存储_物品名称)> <$STR(N$背包存储_仓库原数量)>
+MOV N$背包存储_仓库新数量 <$STR(N$背包存储_仓库原数量)>
+INC N$背包存储_仓库新数量 <$STR(N$背包存储_本次存入)>
+WriteConfigFileItem S$仓库数量文件 仓库数量 <$STR(S$背包存储_物品名称)> <$STR(N$背包存储_仓库新数量)>
+
+#IF
+NOT CheckTextList <$STR(S$仓库索引文件)> <$STR(S$背包存储_物品名称)>
+#ACT
+AddTextListEx <$STR(S$仓库索引文件)> <$STR(S$背包存储_物品名称)> 0
+
+[@执行批量操作]
+#IF
+EQUAL S$当前操作模式 仓库取物
+#ACT
+MESSAGEBOX 仓库取物模式下无法使用此功能。
+BREAK
+
+#IF
+#ACT
+MOV N$批量计数器 0
+MOV N$批量循环行 0
+MOV S$批量操作目标状态 <$STR(N$批量操作目标状态)>
+MOV N$连续空行数 0
+
+#IF
+EQUAL S$搜索关键字 ""
+#ACT
+MOV N$批量开始行 <$STR(N$当前页码)>
+DEC N$批量开始行 1
+MUL N$批量开始行 <$STR(N$每页条数)>
+MOV N$批量循环行 <$STR(N$批量开始行)>
+GOTO @虾米批量循环
+BREAK
+
+#IF
+NOT EQUAL S$搜索关键字 ""
+#ACT
+MOV N$批量开始行 <$STR(N$当前页码)>
+DEC N$批量开始行 1
+MUL N$批量开始行 <$STR(N$每页条数)>
+MOV N$批量当前扫描行 <$STR(N$批量开始行)>
+MOV N$批量当前页已处理数 0
+
+#IF
+NOT EQUAL S$搜索关键字 ""
+EQUAL N$启用列表缓存 1
+#ACT
+GOTO @批量列表缓存循环
+BREAK
+
+MOV N$批量当前扫描行 0
+MOV N$批量已跳过数量 0
+MOV N$批量需要跳过数量 <$STR(N$当前页码)>
+DEC N$批量需要跳过数量 1
+MUL N$批量需要跳过数量 <$STR(N$每页条数)>
+MOV N$批量当前页已处理数 0
+GOTO @批量搜索循环
+BREAK
+
+[@批量列表缓存循环]
+#IF
+#ACT
+MOV N$批量列表缓存结束 0
+MOV N$防止死循环计数 0
+Loopgoto @批量列表缓存循环_单步 81
+
+#IF
+EQUAL N$批量列表缓存结束 1
+#ACT
+GOTO @咕咕鸡过滤
+BREAK
+
+#IF
+#ACT
+DELAYGOTO 5 @批量列表缓存循环
+BREAK
+
+[@批量列表缓存循环_单步]
+#IF
+LARGE N$批量当前页已处理数 17
+#ACT
+MOV N$批量列表缓存结束 1
+endloop
+break
+
+#IF
+NOT SMALL N$批量当前扫描行 <$STR(N$列表缓存数量)>
+#ACT
+MOV N$批量列表缓存结束 1
+endloop
+break
+
+#IF
+#ACT
+INC N$防止死循环计数 1
+MOV S$物品名称 ""
+MOV S$临时行内容 <$str(L$列表缓存[<$str(N$批量当前扫描行)>])>
+
+#IF
+EQUAL S$临时行内容 ""
+#ACT
+INC N$批量当前扫描行 1
+break
+
+#IF
+#ACT
+TextReplace <$STR(S$临时行内容)> ":" "|" S$临时行内容 0 0
+ExtractStringEx "|" <$STR(S$临时行内容)> S$分解内容
+MOV S$物品名称 <$STR(S$分解内容2)>
+
+#IF
+EQUAL S$物品名称 ""
+#ACT
+INC N$批量当前扫描行 1
+break
+
+#IF
+EQUAL S$当前操作模式 过滤设置
+#ACT
+MOV S$操作物品名 <$STR(S$物品名称)>
+MOV N$当前状态 <$STR(S$批量操作目标状态)>
+GOTO @设置过滤状态_批量
+
+#IF
+EQUAL S$当前操作模式 存储设置
+#ACT
+MOV S$操作物品名 <$STR(S$物品名称)>
+MOV N$当前状态 <$STR(S$批量操作目标状态)>
+GOTO @设置存储状态_批量
+
+#IF
+#ACT
+INC N$批量当前页已处理数 1
+INC N$批量当前扫描行 1
+break
+
+[@批量搜索循环]
+#IF
+#ACT
+MOV N$批量搜索结束 0
+MOV N$防止死循环计数 0
+Loopgoto @批量搜索循环_单步 81
+
+#IF
+EQUAL N$批量搜索结束 1
+#ACT
+GOTO @咕咕鸡过滤
+BREAK
+
+#IF
+#ACT
+DELAYGOTO 5 @批量搜索循环
+BREAK
+
+[@批量搜索循环_单步]
+#IF
+LARGE N$批量当前页已处理数 17
+#ACT
+MOV N$批量搜索结束 1
+endloop
+break
+
+#IF
+#ACT
+INC N$防止死循环计数 1
+GetListString <$STR(S$读取文件路径)> <$STR(N$批量当前扫描行)> S$物品ID S$物品名称
+
+#IF
+EQUAL S$物品名称 ""
+#ACT
+INC N$批量当前扫描行 1
+INC N$连续空行数 1
+
+#IF
+EQUAL S$物品名称 ""
+LARGE N$连续空行数 10
+#ACT
+MOV N$批量搜索结束 1
+endloop
+break
+
+#IF
+EQUAL S$物品名称 ""
+#ACT
+break
+
+#IF
+#ACT
+MOV N$连续空行数 0
+
+#IF
+NOT CheckContainsText <$STR(S$物品名称)> <$STR(S$搜索关键字)>
+#ACT
+INC N$批量当前扫描行 1
+break
+
+#IF
+SMALL N$批量已跳过数量 <$STR(N$批量需要跳过数量)>
+#ACT
+INC N$批量已跳过数量 1
+INC N$批量当前扫描行 1
+break
+
+#IF
+EQUAL S$当前操作模式 过滤设置
+#ACT
+MOV S$操作物品名 <$STR(S$物品名称)>
+MOV N$当前状态 <$STR(S$批量操作目标状态)>
+GOTO @设置过滤状态_批量
+
+#IF
+EQUAL S$当前操作模式 存储设置
+#ACT
+MOV S$操作物品名 <$STR(S$物品名称)>
+MOV N$当前状态 <$STR(S$批量操作目标状态)>
+GOTO @设置存储状态_批量
+
+#IF
+#ACT
+INC N$批量当前页已处理数 1
+INC N$批量当前扫描行 1
+break
+
+[@虾米批量循环]
+#IF
+#ACT
+MOV N$虾米批量结束 0
+MOV N$防止死循环计数 0
+Loopgoto @虾米批量循环_单步 81
+
+#IF
+EQUAL N$虾米批量结束 1
+#ACT
+GOTO @咕咕鸡过滤
+BREAK
+
+#IF
+#ACT
+DELAYGOTO 5 @虾米批量循环
+BREAK
+
+[@虾米批量循环_单步]
+#IF
+LARGE N$批量计数器 17
+#ACT
+MOV N$虾米批量结束 1
+endloop
+break
+
+#IF
+#ACT
+INC N$防止死循环计数 1
+GetListString <$STR(S$读取文件路径)> <$STR(N$批量循环行)> S$物品ID S$物品名称
+
+#IF
+EQUAL S$物品名称 ""
+#ACT
+INC N$批量循环行 1
+INC N$连续空行数 1
+
+#IF
+EQUAL S$物品名称 ""
+LARGE N$连续空行数 10
+#ACT
+MOV N$虾米批量结束 1
+endloop
+break
+
+#IF
+EQUAL S$物品名称 ""
+#ACT
+break
+
+#IF
+#ACT
+MOV N$连续空行数 0
+
+#IF
+EQUAL S$物品名称 " "
+#ACT
+INC N$批量循环行 1
+break
+
+#IF
+EQUAL S$物品名称 "  "
+#ACT
+INC N$批量循环行 1
+break
+
+#IF
+EQUAL S$当前操作模式 过滤设置
+#ACT
+MOV S$操作物品名 <$STR(S$物品名称)>
+MOV N$当前状态 <$STR(N$批量操作目标状态)>
+GOTO @设置过滤状态_批量
+
+#IF
+EQUAL S$当前操作模式 存储设置
+#ACT
+MOV S$操作物品名 <$STR(S$物品名称)>
+MOV N$当前状态 <$STR(N$批量操作目标状态)>
+GOTO @设置存储状态_批量
+
+#IF
+#ACT
+INC N$批量循环行 1
+INC N$批量计数器 1
+break
+
+[@取出物品]
+#IF
+#ACT
+MOV S$物品名称 <$SCRIPTPARAM1>
+MOV N$真实数量 <$SCRIPTPARAM3>
+
+#IF
+EQUAL N$真实数量 0
+#ACT
+MESSAGEBOX 你的仓库里没有【<$SCRIPTPARAM1>】。
+BREAK
+
+#IF
+#ACT
+mov N$容器索引 <$SCRIPTPARAM4>
+dec N$容器索引 1
+OPENMERCHANTBIGDLG <$STR(N$虾米资源编号)> 92 1 4 0 0 0
+mov N$输入限制 <$STR(N$真实数量)>
+MOV N$叠加状态 0
+GetDBItemFieldValue <$STR(S$物品名称)> overlap N$叠加状态
+
+#IF
+EQUAL N$叠加状态 0
+LARGE N$输入限制 50
+#ACT
+MOV N$输入限制 50
+
+
+#IF
+#SAY
+<&Text:<$SCRIPTPARAM1>:115:90{FCOLOR=9;FSIZE=10;FNAME=宋体}>
+<&Text:数量:115:113{FCOLOR=9;FSIZE=10;FNAME=宋体}>
+<&ItemShow:<$SCRIPTPARAM2>:<$SCRIPTPARAM3>:63:90:1:0:0:0>
+<&INPUTNUM:1:145:112:90:16:0:249:253:1:<$str(N$输入限制)>:数量必须输入1-<$str(N$输入限制)>之间的数字:能取出1-<$str(N$输入限制)>件:160> \
+<&ImgEx:<$STR(N$虾米资源编号)>:93:93:94:60:165:1/@虾米提交(<$SCRIPTPARAM1>,<$str(N$输入限制)>,<$str(N$容器索引)>,<$str(N$真实数量)>)>
+<&ImgEx:<$STR(N$虾米资源编号)>:95:95:96:160:165/@虾米取消(<$str(N$容器索引)>)>
+
+[@虾米提交]
+#ACT
+MOV N$输入数量 <$NPCINPUT(1)>
+
+#IF
+SMALL N$输入数量 1
+#ACT
+MESSAGEBOX 数量必须输入1-<$SCRIPTPARAM2>之间的数字。
+BREAK
+
+#IF
+LARGE N$输入数量 <$SCRIPTPARAM2>
+#ACT
+MESSAGEBOX 数量必须输入1-<$SCRIPTPARAM2>之间的数字。
+BREAK
+
+#IF
+#ACT
+MOV N$叠加状态 0
+MOV N$需要空格 1
+GetDBItemFieldValue <$SCRIPTPARAM1> overlap N$叠加状态
+
+#IF
+EQUAL N$叠加状态 0
+#ACT
+MOV N$需要空格 <$STR(N$输入数量)>
+
+#IF
+NOT CheckBagSize <$STR(N$需要空格)>
+#ACT
+MESSAGEBOX 背包空格不足，需要<$str(N$需要空格)>个空格！
+BREAK
+
+#IF
+#ACT
+FORMULATION <$SCRIPTPARAM4>-<$str(N$输入数量)> N$数量
+Give <$SCRIPTPARAM1> <$str(N$输入数量)>
+
+#IF
+SMALL N$数量 1
+#ACT
+MOV N$数量 0
+DelTextList <$STR(S$仓库索引文件)> <$SCRIPTPARAM1>
+
+#IF
+#ACT
+WriteConfigFileItem S$仓库数量文件 仓库数量 <$STR(S$物品名称)> <$str(N$数量)>
+MOV N$跳到第几个容器2 <$SCRIPTPARAM3>
+GOTO @咕咕鸡过滤
+BREAK
+
+[@虾米取消]
+#ACT
+MOV N$跳到第几个容器2 <$SCRIPTPARAM1>
+GOTO @咕咕鸡过滤
+BREAK
+
+[@获取过滤状态_单次]
+#IF
+#ACT
+MOV S$物品名称 <$STR(S$操作物品名)>
+MOV N$过滤状态 0
+#IF
+EQUAL S$用户数据存储地址 ""
+#ACT
+MOV S$用户数据存储地址 ..\..\..\..\通区文件\<$SERVERNAME>\<$USERID>_<$USERNAME>.ini
+#IF
+#ACT
+ReadConfigFileItem S$用户数据存储地址 过滤物品 <$STR(S$物品名称)> <$STR(N$过滤状态)>
+MOV N$当前状态 <$STR(N$过滤状态)>
+
+[@获取存储状态_单次]
+#IF
+#ACT
+MOV S$物品名称 <$STR(S$操作物品名)>
+MOV N$存储状态 0
+#IF
+EQUAL S$用户数据存储地址 ""
+#ACT
+MOV S$用户数据存储地址 ..\..\..\..\通区文件\<$SERVERNAME>\<$USERID>_<$USERNAME>.ini
+#IF
+#ACT
+ReadConfigFileItem S$用户数据存储地址 存储物品 <$STR(S$物品名称)> <$STR(N$存储状态)>
+MOV N$当前状态 <$STR(N$存储状态)>
+
+[@获取仓库数量_单次]
+#IF
+#ACT
+MOV S$物品名称 <$STR(S$操作物品名)>
+MOV N$仓库数量 0
+#IF
+EQUAL S$用户数据存储地址 ""
+#ACT
+MOV S$用户数据存储地址 ..\..\..\..\通区文件\<$SERVERNAME>\<$USERID>_<$USERNAME>.ini
+#IF
+#ACT
+ReadConfigFileItem S$仓库数量文件 仓库数量 <$STR(S$物品名称)> <$STR(N$仓库数量)>
+MOV N$库存数量 <$STR(N$仓库数量)>
+
+[@设置过滤状态_关闭]
+#IF
+#ACT
+WriteConfigFileItem S$用户数据存储地址 过滤物品 <$STR(S$操作物品名)> 87
+
+[@设置过滤状态_开启]
+#IF
+#ACT
+WriteConfigFileItem S$用户数据存储地址 过滤物品 <$STR(S$操作物品名)> 88
+
+[@设置过滤状态_批量]
+#IF
+#ACT
+WriteConfigFileItem S$用户数据存储地址 过滤物品 <$STR(S$操作物品名)> <$STR(N$当前状态)>
+
+[@设置存储状态_关闭]
+#IF
+#ACT
+WriteConfigFileItem S$用户数据存储地址 存储物品 <$STR(S$操作物品名)> 87
+
+[@设置存储状态_开启]
+#IF
+#ACT
+WriteConfigFileItem S$用户数据存储地址 存储物品 <$STR(S$操作物品名)> 88
+
+[@设置存储状态_批量]
+#IF
+#ACT
+WriteConfigFileItem S$用户数据存储地址 存储物品 <$STR(S$操作物品名)> <$STR(N$当前状态)>
+
+[@加载怪物集合]
+#if
+#act
+MOV N$跳到第几个容器 <$SCRIPTPARAM2>
+dec N$跳到第几个容器 1
+mov S$怪物集合内容
+mov S$掉落物品名称 <$SCRIPTPARAM1>
+GetTextLineCount <$str(S$物品数据存储地址)><$SCRIPTPARAM1>.txt N$怪物集合总行数
+mov N$怪物集合开始行数 0
+While N$怪物集合开始行数 < N$怪物集合总行数
+GetListString <$str(S$物品数据存储地址)><$SCRIPTPARAM1>.txt <$str(N$怪物集合开始行数)> S$怪物名称
+INC S$怪物集合内容 <Layout:#L2~#L1<$STR(N$怪物集合开始行数)>:0:3:234:20>
+INC S$怪物集合内容 <&Text:#L1<$STR(n$怪物集合开始行数)>~:<$STR(S$怪物名称)>:0:0{FCOLOR=243;FSIZE=12;FNAME=黑体}/@选择怪物(<$STR(S$怪物名称)>,<$STR(n$怪物集合开始行数)>)>
+inc N$怪物集合开始行数 1
+EndWhile
+GOTO @显示最终界面
+
+[@选择怪物]
+#if
+#act
+GetDBMonsterFieldValue <$SCRIPTPARAM1> appr <$STR(N$怪物APPR)>
+GetDBMonsterFieldValue <$SCRIPTPARAM1> raceImg <$STR(N$怪物RaceImg)>
+mov <$str(N$跳到第几个怪物容器)> <$SCRIPTPARAM2>
+GOTO @加载地图集合(<$SCRIPTPARAM1>)
+GOTO @显示最终界面
+
+[@加载地图集合]
+#if
+LARGE U599 499
+#act
+mov S$刷新怪物名称 <$SCRIPTPARAM1>
+mov S$地图集合内容
+GetTextLineCount <$str(S$地图数据存储地址)><$SCRIPTPARAM1>.txt N$地图集合总行数
+mov N$地图集合开始行数 0
+While N$地图集合开始行数 < N$地图集合总行数
+GetListString <$str(S$地图数据存储地址)><$SCRIPTPARAM1>.txt <$str(N$地图集合开始行数)> S$地图名称
+ExtractStringEx "|" <$str(S$地图名称)> S$地图名称数据
+INC S$地图集合内容 <Layout:#L3~#L1<$STR(N$地图集合开始行数)>:0:3:234:20>
+INC S$地图集合内容 <Text:#L1<$STR(n$地图集合开始行数)>~:<$str(S$地图名称数据2)>:0:0{FCOLOR=215;FSIZE=12;FNAME=黑体}/@虾米飞走(<$str(S$地图名称数据1)>,<$str(S$地图名称数据3)>,<$str(S$地图名称数据4)>)>
+INC S$地图集合内容 <Text:#L1<$STR(n$地图集合开始行数)>~:数量<$str(S$地图名称数据3)>:10:0{FCOLOR=243;FSIZE=12;FNAME=黑体}>
+INC S$地图集合内容 <Text:#L1<$STR(n$地图集合开始行数)>~:时间<$str(S$地图名称数据4)>:20:0{FCOLOR=243;FSIZE=12;FNAME=黑体}>
+inc N$地图集合开始行数 1
+EndWhile
+#elseact
+mov S$刷新怪物名称 <$SCRIPTPARAM1>
+mov S$地图集合内容
+GetTextLineCount <$str(S$地图数据存储地址)><$SCRIPTPARAM1>.txt N$地图集合总行数
+mov N$地图集合开始行数 0
+While N$地图集合开始行数 < N$地图集合总行数
+GetListString <$str(S$地图数据存储地址)><$SCRIPTPARAM1>.txt <$str(N$地图集合开始行数)> S$地图名称
+ExtractStringEx "|" <$str(S$地图名称)> S$地图名称数据
+INC S$地图集合内容 <Layout:#L3~#L1<$STR(N$地图集合开始行数)>:0:3:234:20>
+INC S$地图集合内容 <Text:#L1<$STR(n$地图集合开始行数)>~:<$str(S$地图名称数据2)>:0:0{FCOLOR=243;FSIZE=12;FNAME=黑体}>
+INC S$地图集合内容 <Text:#L1<$STR(n$地图集合开始行数)>~:数量<$str(S$地图名称数据3)>:10:0{FCOLOR=243;FSIZE=12;FNAME=黑体}>
+INC S$地图集合内容 <Text:#L1<$STR(n$地图集合开始行数)>~:时间<$str(S$地图名称数据4)>:20:0{FCOLOR=243;FSIZE=12;FNAME=黑体}>
+inc N$地图集合开始行数 1
+EndWhile
+[@虾米飞走]
+#IF
+#ACT
+MOV S$目标地图 <$SCRIPTPARAM1>
+MOV N$目标坐标X <$SCRIPTPARAM2>
+MOV N$目标坐标Y <$SCRIPTPARAM3>
+MAPMOVE <$STR(S$目标地图)> <$STR(N$目标坐标X)> <$STR(N$目标坐标Y)>
+}

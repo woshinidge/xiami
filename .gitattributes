@@ -1,0 +1,29 @@
+* text=auto
+
+# Source and documentation use stable Windows checkouts.
+*.py text eol=crlf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.md text eol=crlf
+*.spec text eol=crlf
+
+# Legacy game/configuration files may be GBK/ANSI and must not be normalized.
+*.txt -text
+*.ini -text
+*.cfg -text
+*.dat -text
+*.db -text
+*.sqlite -text
+
+# Binary runtime and visual assets.
+*.exe binary
+*.dll binary
+*.pyd binary
+*.ico binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.wzl binary
+*.pak binary

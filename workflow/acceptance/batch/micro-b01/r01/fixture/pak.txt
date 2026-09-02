@@ -1,0 +1,3 @@
+D:\OldClient\PatchA\Data\a.pak|ÃÜÂë
+D:\OldClient\PatchA\Graphics\b.pak|1234
+D:\OldClient\PatchA\Data\empty.pak|

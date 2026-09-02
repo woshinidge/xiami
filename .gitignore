@@ -1,0 +1,66 @@
+# Python / Qt caches
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv*/
+venv/
+env/
+
+# IDE / editor state
+.idea/
+.vscode/
+
+# Build and package outputs
+build/
+dist/
+__zip_stage__/
+*.obj
+*.zip
+*.7z
+*.rar
+*.release.json
+*.sha256
+
+# Runtime smoke/test artifacts
+artifacts/
+.pytest_cache/
+*.log
+*_startup.log
+
+# Local temporary work dirs
+__downloads__/
+temp_*/
+demo_*/
+_tmp_*
+_tmp*
+tmp/
+outputs/
+
+# Generated acceptance evidence and recovery archives
+source_backups/
+legacy_recovery_archive/
+
+# Local runtime/user state
+auth_settings.json
+auth_users.json
+free_micro_client_usage.json
+micro_client_configs.json
+toolbox_login.json
+toolbox_size_preferences.json
+toolbox_global_quick_tools.json
+存销系统配置.json
+@AutomationLog.txt
+embedded_xiami/runtime/
+embedded_xiami/xiami_plugins/*/plugin_config.json
+embedded_xiami/xiami_plugins/*/plugin_data/
+embedded_xiami/xiami_plugins/*/plugin_state/
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# One-off validation/temp captures
+toolbox_qt_ascii_temp.py
+ui_validation_screenshot_windows.png

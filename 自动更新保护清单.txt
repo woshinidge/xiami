@@ -1,0 +1,57 @@
+虾米工具箱自动更新保护清单
+
+说明
+本清单描述当前自动更新逻辑中，会在更新前备份、更新后回写的文件和目录。
+当前更新策略已经改为保守覆盖复制，不再使用镜像删除。
+同时，源码运行模式下已经禁止执行覆盖式自动更新。
+
+当前保护的文件
+toolbox_login.json
+toolbox_size_preferences.json
+auth_settings.json
+auth_users.json
+script_templates_store.json
+data\script_templates_store.json
+item_templates_store.json
+data\item_templates_store.json
+recycle_settings.json
+micro_client_configs.json
+data\micro_client_configs.json
+update_state.json
+Config.ini
+存销系统配置.json
+源码修改备份规则.txt
+工具箱_qt.py
+toolbox_update.py
+工具箱_qt.bootstrap_backup.py
+
+当前保护的目录
+微端配置目录
+微端配置
+micro_configs
+micro_client_configs
+Website
+resources
+tools
+source_backups
+_internal\微端配置目录
+_internal\微端配置
+_internal\micro_configs
+_internal\micro_client_configs
+
+当前更新行为
+1. 下载更新包前，必须满足：
+HTTPS 下载地址
+SHA256 校验值存在
+程序处于打包运行模式
+
+2. 更新时会先把上面清单中的内容复制到临时保留区。
+
+3. 更新主体使用递归覆盖复制，不再删除安装目录中“更新包里不存在”的其他文件。
+
+4. 更新完成后，再把保留区中的文件和目录复制回去。
+
+仍需注意
+1. 如果更新包里带了与你本地同名的普通文件，而这个文件又不在保护清单中，那么它仍然可能被覆盖。
+2. 如果你后续新增了长期手改目录，建议同步加进更新保护清单。
+3. Website 下的网页源码现在已在保护范围内，不会被自动更新轻易覆盖。
