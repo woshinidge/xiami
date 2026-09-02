@@ -2,7 +2,6 @@
 
 **版本 1.4.5** | 基于 PySide2 (Qt) 的 Windows 桌面工具箱
 
-> 本项目为 **私有仓库**（Private Repository），仅供授权使用。
 
 ---
 
